@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="addJs"><script>jscolor/jscolor_2.0.4.js</script></action>
+        </reference>
+    </adminhtml_system_config_edit>
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>lib/jquery/jquery-1.10.2.min.js</script></action>
+            <action method="addJs"><script>lib/jquery/noconflict.js</script></action>
+            <action method="addJs"><script>admin_menu/menu.js</script></action>
+        </reference>
+    </default>
+</layout>

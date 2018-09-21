@@ -1,0 +1,18 @@
+<?php
+    $featuredProducts = $this->getLoadedProductCollection()->addAttributeToSelect('small_image');
+    $imageHelper = $this->helper('catalog/image');
+?>
+<?php if(count($featuredProducts->getItems())): ?>
+    <div class="section-products featured-product">
+        <h3 class="section-title"><span><?php echo $this->__('Featured Product') ?></span></h3>
+        <div class="carousel">
+            <div class="owl-carousel">
+                <?php $productRenderer = $this->getChild('product_renderer'); ?>
+                <?php foreach ($featuredProducts as $fp): ?>
+                    <?php $productRenderer->setProduct($fp); ?>
+                    <?php echo $productRenderer->toHtml(); ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

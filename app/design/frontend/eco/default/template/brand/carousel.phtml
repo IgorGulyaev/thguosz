@@ -1,0 +1,9 @@
+<?php if(sizeof($this->getChild('eco.brand')->getBrandCollection()) == 0): ?>
+    <p><?php echo $this->__('There are no current brands.') ?></p>
+<?php else: ?>
+    <div class="carousel">
+        <div class="owl-carousel">
+            <?php echo $this->getChildHtml()?>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,330 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+
+	<default>
+
+		<reference name="head">
+
+			<!-- Remove Magento's default assets -->
+
+			<action method="removeItem">
+				<type>skin_css</type>
+				<name>css/print.css</name>
+			</action>
+			<action method="removeItem">
+				<type>skin_css</type>
+				<name>css/styles-ie.css</name>
+			</action>
+			<action method="removeItem">
+				<type>skin_css</type>
+				<name>css/styles.css</name>
+			</action>
+			<action method="removeItem">
+				<type>skin_css</type>
+				<name>css/widgets.css</name>
+			</action>
+            <action method="removeItem">
+                <type>skin_css</type>
+                <name>css/magestore/giftvoucher/mobilelibrary.css</name>
+            </action>
+            <action method="removeItem">
+                <type>skin_css</type>
+                <name>css/magestore/mobilelibrary.css</name>
+            </action>
+			<action method="removeItem">
+				<type>skin_js</type>
+				<name>js/ie6.js</name>
+			</action>
+			<action method="removeItem">
+				<type>js</type>
+				<name>lib/ds-sleight.js</name>
+			</action>
+			<action method="removeItem">
+				<type>js</type>
+				<name>varien/menu.js</name>
+			</action>
+
+            <!-- remove jquery -->
+
+            <action method="removeItem">
+                <type>js</type>
+                <name>/magestore/giftvoucher/jquery-1.11.2.min.js</name>
+            </action>
+
+            <!-- remove iwd scripts jquery -->
+
+            <action method="removeItem">
+                <type>js</type>
+                <name>iwd/all/iwd-jquery-2.1.3.min.js</name>
+            </action>
+            <action method="removeItem">
+                <type>js</type>
+                <name>iwd/all/modal.js</name>
+            </action>
+            <action method="removeItem">
+                <type>js</type>
+                <name>opc/login.js</name>
+            </action>
+
+            <!-- remove Ajax Pro + add skin_js ajaxcartpro scripts -->
+
+            <action method="removeItem">
+                <type>skin_css</type>
+                <name>ajaxcartpro/css/styles.css</name>
+            </action>
+            <action method="removeItem">
+                <type>skin_css</type>
+                <name>ajaxcartpro/css/ie7-style.css</name>
+            </action>
+            <remove name="aw.ajaxcartpro.progress"/>
+
+            <!-- add minicart -->
+
+            <action method="addItem"><type>skin_js</type><name>js/minicart.js</name></action>
+
+			<!-- Add our assets -->
+
+            <action method="addCss">
+                <stylesheet>css/bootstrap.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/animate.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/owl-carousel.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/masterslider.main.min.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/jquery.fancybox.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/fonts.css</stylesheet>
+            </action>
+
+            <!-- base all -->
+
+            <action method="addCss">
+                <stylesheet>css/base.css</stylesheet>
+            </action>
+
+            <!-- base css -->
+
+            <action method="addCss">
+                <stylesheet>css/base-transition.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-clears.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-table.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-header.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-footer.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-nav.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-forms.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-buttons.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-loading.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-modals.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-layered-navigation.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-compare-wishlist.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-widgets.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-navbar.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-cart.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-checkout.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-products.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-product-media.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-configurable-swatch.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/bootstrap-datetimepicker.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-print.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/base-hide.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/style.css</stylesheet>
+            </action>
+
+            <!-- base scripts -->
+
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/script.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.noconflict.js</name>
+            </action>
+            <action method="addItem" ifconfig="ecomitize_all_scroll_options/messages/scroll_option_enabled">
+                <type>skin_js</type
+                ><name>js/scroll/infinitescroll/jquery-ias.js</name>
+            </action>
+            <action method="addItem" ifconfig="ecomitize_all_scroll_options/messages/scroll_option_enabled">
+                <type>skin_js</type>
+                <name>js/scroll/scroll.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.mobile.custom.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/device.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.easing.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.html5-placeholder-shim.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/owl.carousel.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/masterslider.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.fancybox.pack.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.fancybox-thumbs.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.mousewheel.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/responsive-tabs.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/moment.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/bootstrap-datetimepicker.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jq.js</name>
+            </action>
+            <action method="addJs">
+                <script>varien/product_options.js</script>
+            </action>
+
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/clipboard.min.js</name>
+            </action>
+
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/html5shiv.js</name>
+                <params/>
+                <if>lt IE 9</if>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/respond.min.js</name>
+                <params/>
+                <if>lt IE 9</if>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/ie.css</name>
+                <params/>
+                <if>IE</if>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/ie9.css</name>
+                <params/>
+                <if>IE 9</if>
+            </action>
+
+            <!--<action method="addCss">
+                <stylesheet>masterslider/style/masterslider.css</stylesheet>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>masterslider/masterslider.min.js</name>
+            </action>-->
+
+            <action method="addItem"><type>skin_js</type><name>js/lib/modernizr.custom.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/lib/selectivizr.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/lib/matchMedia.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/lib/matchMedia.addListener.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/lib/enquire.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/app.js</name></action>
+
+            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/product-media.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/swatches-product.js</name></action>
+
+
+            <action method="addItem"><type>skin_js</type><name>js/lib/imagesloaded.js</name></action>
+		</reference>
+
+	</default>
+
+	<print>
+
+		<reference name="head">
+
+			<!-- Add our assets -->
+			<action method="addCss">
+				<stylesheet>css/print.css</stylesheet>
+			</action>
+			<action method="addItem">
+				<type>skin_js</type>
+				<name>js/script-ck.js</name>
+			</action>
+
+		</reference>
+
+	</print>
+
+</layout>

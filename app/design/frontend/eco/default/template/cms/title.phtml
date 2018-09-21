@@ -1,0 +1,21 @@
+<?php if ($this->getH1()): ?>
+    <div class="page-title">
+        <h1><?php echo $this->getH1(); ?></h1>
+    </div>
+<?php elseif ($this->getH2()): ?>
+    <div class="page-title">
+        <h2><?php echo $this->getH2(); ?></h2>
+    </div>
+<?php elseif ($this->getH3()): ?>
+    <div class="page-title">
+        <h3><?php echo $this->getH3(); ?></h3>
+    </div>
+<?php elseif ($this->getH4()): ?>
+    <div class="page-title">
+        <h4><?php echo $this->getH4(); ?></h4>
+    </div>
+<?php elseif ($this->getH5()): ?>
+    <div class="page-title">
+        <h5><?php echo $this->getH5(); ?></h5>
+    </div>
+<?php endif; ?>

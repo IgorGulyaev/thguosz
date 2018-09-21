@@ -1,0 +1,42 @@
+<?php
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+?>
+<div class="customer-account-giftcard">
+    <div class="page-title">
+        <h1><?php echo $this->__('Gift card') ?></h1>
+    </div>
+    <div class="gift-card">
+        <div class="credit-balance">
+            <h2 class="credit-balance"><?php echo $this->__('My credit balance:') ?> <span class="regular-price"><span><?php echo $this->getBalanceAccount() ?></span></span></h2>
+            <button type="button" class="button btn-add btn-addredeem" onclick="setLocation('<?php echo $this->getUrl('giftvoucher/index/addredeem') ?>')">
+                <?php if (Mage::helper('giftvoucher')->getGeneralConfig('enablecredit')) { ?>
+                    <span><span><?php echo $this->__('Add / Redeem a Gift Card') ?></span></span>
+                <?php } else { ?>
+                    <span><span><?php echo $this->__('Add a Gift Card') ?></span></span>
+                <?php } ?>
+            </button>
+        </div>
+        <?php if (Mage::helper('giftvoucher')->getGeneralConfig('enablecredit')) { ?>
+            <a class="btn-view-detail" href="<?php echo $this->getUrl('giftvoucher/index/history') ?>"><?php echo $this->__('View detail') ?></a>
+        <?php } ?>
+        <?php echo $this->getGridHtml() ?>
+    </div>
+</div>

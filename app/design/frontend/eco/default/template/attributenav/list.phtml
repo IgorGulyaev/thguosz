@@ -1,0 +1,12 @@
+<div class="section-products section-brands">
+    <h3 class="section-title"><span><?php echo $this->__('Brands') ?></span></h3>
+    <div class="carousel">
+        <div class="owl-carousel owl-theme owl-loaded">
+            <?php foreach ($this->getCollection() as $attribute): ?>
+                <a title="<?php echo $attribute['value'];?>" href="<?php echo $this->getUrl('attribute/index/index') . '?' .  $this->attributeCode . '=' . $attribute['option_id'] ?>">
+                    <img alt="<?php echo $attribute['value'];?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'aw_layerednavigation/' . $attribute['option_id'] . DS . $attribute['image'] ?>">
+                </a>
+            <?php endforeach ?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<?php
+$products = $this->getProductCollection();
+$imageHelper = $this->helper('catalog/image');
+?>
+<?php if(count($products->getItems())): ?>
+    <div class="section-products">
+        <h3 class="section-title"><span><?php echo $this->__('Products') ?></span></h3>
+        <div class="carousel">
+            <div class="owl-carousel">
+                <?php $productRenderer = $this->getChild('product_renderer'); ?>
+                <?php foreach ($products as $product): ?>
+                    <?php $productRenderer->setProduct($product); ?>
+                    <?php echo $productRenderer->toHtml(); ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

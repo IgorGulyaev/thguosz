@@ -1,0 +1,162 @@
+<?php
+$gCode = $this->getBannerGroupCode();
+$data  = $this->getDataByGroupCode($gCode);
+$gData = $data['group_data'];
+$mode  = $gData->getPreBannerEffects();
+?>
+<?php if(count($data['banner_data'])): ?>
+    <div class="banners banners-<?php echo $gCode ?>">
+        <?php if ($data['group_data']->getSlider()): ?><div class="owl-carousel<?php if ($this->getAutoHeight() == 'true'): ?> owl-height<?php endif; ?>"><?php endif; ?>
+            <?php if ($data['group_data']->getRandom()) {shuffle($data['banner_data']);} ?>
+            <?php $counter = 0; ?>
+            <?php foreach ($data['banner_data'] as $banner): ?>
+                <?php if ($this->getBannerRandomCount()): ?>
+                    <?php $bannerRandomCount = $this->getBannerRandomCount() ?>
+                <?php else: ?>
+                    <?php if ($gData->getRandomCount() == 0): ?>
+                        <?php $bannerRandomCount = 999 ?>
+                    <?php else: ?>
+                        <?php $bannerRandomCount = $gData->getRandomCount() ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+                <?php if (!is_null($bannerRandomCount) && $bannerRandomCount <= $counter ): ?>
+                    <?php break; ?>
+                <?php endif; ?>
+                <?php $counter++ ?>
+                <?php
+                    $type    = $banner->getBannerType();
+                    $title   = $banner->getTitle();
+                    $content = $banner->getBannerContent();
+                    $link    = $banner->getLink();
+                    $imgName = $banner->getFilename();
+                    $buttonText = $banner->getButtonText();
+                ?>
+                <div id="item-banner-<?php echo $banner->getBannerId() ?>" class="item"<?php if ($banner->getBannerBackgroundColor()): ?> style="background-color: <?php echo $banner->getBannerBackgroundColor() ?>"<?php endif; ?>>
+                    <?php if ($banner->getActiveLinkColor()): ?>
+                        <style>
+                            .banners.banners-<?php echo $gCode ?> .owl-dots > .active.item-banner-<?php echo $banner->getBannerId() ?> {
+                                color: <?php echo $banner->getActiveLinkColor() ?>!important;
+                            }
+                            <?php if ($gData->getShowContent()): ?>
+                            .banners.banners-<?php echo $gCode ?> #item-banner-<?php echo $banner->getBannerId() ?> a:hover .banner-wrapper {
+                                background-color: <?php echo $banner->getActiveLinkColor() ?>!important;
+                            }
+                            <?php endif; ?>
+                        </style>
+                    <?php endif; ?>
+                    <?php
+                        $image = null;
+                        $path = Mage::getBaseDir('media').DS.$imgName;
+                        if (@file_exists($path) && $size = getimagesize($path)):
+                            $image = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$imgName;
+                        endif;
+                    ?>
+                    <?php if ($type == 0): ?>
+                        <?php if ($image): ?>
+                            <a <?php echo ($link) ? sprintf('href="%s"', $link):''; ?>
+                                <?php echo ($title && $gData->getShowTitle() ? sprintf('title="%s"', $title):''); ?>
+                                <?php echo ($data['group_data']->getLinkTarget()) ? 'target="_blank"':''; ?>>
+                                <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+                            </a>
+                        <?php endif; ?>
+                    <?php elseif ($type == 1) : ?>
+                            <?php if ($image): ?><img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>"><?php endif; ?>
+                            <?php if ($gData->getShowTitle() || $gData->getShowContent()): ?>
+                                <div class="banner-wrapper">
+                                    <?php if ($title): ?>
+                                        <?php if ($gData->getShowTitle()): ?>
+                                            <div class="banner-title"><?php echo $title ?></div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <?php if ($content): ?>
+                                        <?php if ($gData->getShowContent()): ?>
+                                            <div class="banner-content"><?php echo $content ?></div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <?php if ($buttonText): ?>
+                                        <a class="button btn-banner" <?php echo ($link) ? sprintf('href="%s"', $link):''; ?>
+                                            <?php echo ($title && $gData->getShowTitle() ? sprintf('title="%s"', $title):''); ?>
+                                            <?php echo ($data['group_data']->getLinkTarget()) ? 'target="_blank"':''; ?>>
+                                            <span><?php echo $buttonText; ?></span>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+            <?php if ($data['group_data']->getSlider()): ?>
+        </div>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $(window).load(function() {
+                    $('.banners.banners-<?php echo $gCode ?> .owl-carousel').owlCarousel({
+                        <?php if ($data['group_data']->getAutoScroll()): ?>
+                        autoplay: true,
+                        autoplayHoverPause: true,
+                        <?php if ($data['group_data']->getAutoScrollTimeout()): ?>
+                        autoplayTimeout: <?php echo $data['group_data']->getAutoScrollTimeout() ?>,
+                        <?php endif; ?>
+                        <?php endif; ?>
+                        margin: 0,
+                        navText: false,
+                        <?php if ($mode == 'fade') : ?>
+                        animateOut: 'fadeOut',
+                        <?php endif; ?>
+                        <?php if ($this->getBannerHeight()): ?>
+                        autoHeight: true,
+                        <?php endif; ?>
+                        <?php if ($this->getBannerLoop()): ?>
+                        loop: <?php echo $this->getBannerLoop(); ?>,
+                        <?php endif; ?>
+                        <?php if ($this->getBannerNav()): ?>
+                        nav: <?php echo $this->getBannerNav(); ?>,
+                        <?php endif; ?>
+                        <?php if ($this->getBannerDots()): ?>
+                        dots: <?php echo $this->getBannerDots(); ?>,
+                        <?php endif; ?>
+                        items: <?php echo $this->getBannerCount() ? $this->getBannerCount() : 5; ?>,
+                        <?php if ($data['group_data']->getActiveItem()): ?>
+                        onInitialized : owlDots,
+                        <?php endif; ?>
+                        <?php if ($this->getBannerResponsive() == 'true'): ?>
+                        responsive: {
+                            0:{
+                                items: <?php echo $this->getBannerCountResponsiveXs(); ?>
+                            },
+                            600:{
+                                items: <?php echo $this->getBannerCountResponsiveSm(); ?>
+                            },
+                            960:{
+                                items: <?php echo $this->getBannerCountResponsiveMd(); ?>
+                            },
+                            1200:{
+                                items: <?php echo $this->getBannerCountResponsiveLg(); ?>
+                            },
+                            1500: {
+                                items: <?php echo $this->getBannerCountResponsiveXlg(); ?>
+                            }
+                        }
+                        <?php endif; ?>
+                    });
+                });
+                <?php if ($data['group_data']->getActiveItem()): ?>
+                function owlDots() {
+                    $.each($('.banners.banners-<?php echo $gCode ?> .owl-carousel .owl-item').not('.cloned').find('.item'), function (i) {
+                        var titleData = $(this).find('img').attr('title');
+                        var idData = $(this).find('img').attr('id');
+                        var paginationLinks = $('.banners.banners-<?php echo $gCode ?> .owl-dots .owl-dot span');
+                        <?php if ($gCode == 'index-banners'): ?>
+                        /* add title in dots */
+                        /*$(paginationLinks[i]).append(titleData);*/
+                        <?php endif; ?>
+                        $(paginationLinks[i]).parent().addClass(idData);
+                    });
+                }
+                $('.banners.banners-<?php echo $gCode ?> .owl-carousel .owl-dot.item-banner-<?php echo $data['group_data']->getActiveItem() ?>').trigger('click');
+                <?php endif; ?>
+            });
+        </script>
+    <?php endif; ?>
+    </div>
+<?php endif; ?>

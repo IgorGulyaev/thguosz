@@ -1,0 +1,18 @@
+<?php
+    $onsaleProducts = $this->getLoadedProductCollection();
+    $imageHelper = $this->helper('catalog/image');
+?>
+<?php if(count($onsaleProducts->getItems())): ?>
+    <div class="section-products sale-product">
+        <h3 class="section-title"><span><?php echo $this->__('Special offers') ?></span></h3>
+        <div class="carousel">
+            <div class="owl-carousel">
+                <?php $productRenderer = $this->getChild('product_renderer'); ?>
+                <?php foreach ($onsaleProducts as $op): ?>
+                    <?php $productRenderer->setProduct($op); ?>
+                    <?php echo $productRenderer->toHtml(); ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

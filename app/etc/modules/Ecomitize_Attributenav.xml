@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ecomitize_Attributenav>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Ecomitize_Attributenav>
+        <depends>
+            <AW_Layerednavigation/>
+        </depends>
+    </modules>
+</config>

@@ -1,0 +1,220 @@
+/* buttons */
+
+button {
+    border-radius: 0; /* need for iphone */
+}
+
+.button,
+.back-link > a,
+.alert-price.link-price-alert > a,
+.aw-acp-checkout,
+.aw-acp-continue {
+    display: inline-block;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /**/
+    height: 40px;
+    padding: 9px 12px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    border: 1px solid #506d2f;
+    background-color: #506d2f;
+    border-radius: 0; /* need for iphone */
+}
+
+.button:before {
+    color: #fff;
+}
+
+.back-link > a:hover,
+.back-link > a:focus,
+.button:hover,
+.button:focus,
+.alert-price.link-price-alert > a:hover,
+.alert-price.link-price-alert > a:focus,
+.aw-acp-checkout:hover,
+.aw-acp-checkout:focus,
+.aw-acp-continue:not(.close):hover,
+.aw-acp-continue:not(.close):focus {
+    background-color: #7d5642;
+    border-color: #7d5642;
+    color: #fff;
+    text-decoration: none;
+}
+
+.back-link > a:focus,
+.button:focus,
+.alert-price.link-price-alert > a:focus,
+.aw-acp-checkout:not(.close):focus,
+.aw-acp-continue:not(.close):focus {
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.back-link > a:active,
+.back-link > a.active,
+.button:active,
+.button.active,
+.aw-acp-checkout.active,
+.aw-acp-continue.active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.back-link > a,
+.aw-acp-continue {
+    background-color: transparent;
+    border-color: #506d2f;
+    color: #000;
+}
+
+.back-link > a:hover,
+.back-link > a:focus {
+    background-color: transparent;
+    border-color: #506d2f;
+    color: #000;
+}
+
+.link-reorder {
+    margin-left: 15px;
+}
+
+[class*='button-'] > span,
+[class*='button-'] > span > span {
+    line-height: 1;
+}
+
+[class*='button-'] > i,
+[class*='btn-'] > i {
+    margin-right: 8px;
+}
+
+/*.button:hover i,
+.button:active i,
+.button:focus i,
+.back-link > a:hover:before,
+.back-link > a:active:before,
+.back-link > a:focus:before {
+    color: #506d2f;
+}*/
+
+@media (min-width: 767px) {
+    .button,
+    .back-link > a {
+        white-space: nowrap;
+    }
+
+    .back-link {
+        margin: 0;
+        float: left;
+    }
+}
+
+@media (max-width: 767px) {
+    .button,
+    .back-link > a {
+        display: block;
+        width: 100%;
+    }
+}
+
+.button-print {
+    float: right;
+    font-size: 14px;
+}
+
+/* back product list button (product page) */
+
+.back-product-list {
+    margin-top: 15px;
+}
+
+/**/
+
+/* load more button + scroll loading */
+
+.load-more {
+    text-align: center;
+    margin: 25px 0;
+    display: block;
+    width: 100%;
+}
+
+.load-more .button {
+    height: 60px;
+    padding: 20px 67px;
+}
+
+/* paypal amazon button */
+
+a[href*='paypal'],
+a[href*='amazon'] {
+    background: none!important;
+    height: auto!important;
+}
+
+.main a[href*='paypal'],
+.main a[href*='amazon'] {
+    width: auto!important;
+    text-align: center;
+    margin: 15px!important;
+    display: block!important;
+}
+
+.main a[href*='amazon']:before {
+    color: #ff9900;
+}
+
+.main a[href*='paypal']:before {
+    color: #012169;
+}
+
+a[href*='amazon']:after {
+    content: 'Login In with Amazon';
+}
+
+a[href*='paypal']:after {
+    content: 'Login In with Paypal';
+}
+
+a[href*='paypal']:before,
+a[href*='amazon']:before {
+    display: block;
+    font-size: 30px;
+}
+
+a[href*='paypal']:after,
+a[href*='amazon']:after {
+    display: block;
+}
+
+/* close buttons */
+
+.close {
+    padding: 2px;
+    font-size: inherit;
+}
+
+.close,
+.close:hover,
+.close:focus {
+    opacity: 1;
+}
+
+/* btn-filter */
+
+@media (max-width: 767px) {
+    .btn-filter:before {
+        margin: 0;
+    }
+}

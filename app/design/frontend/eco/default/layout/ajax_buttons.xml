@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/ajax_buttons.js</name></action>
+        </reference>
+    </default>
+
+    <catalog_product_view>
+        <reference name="product.info.addto">
+            <action method="setTemplate">
+                <name>ajax_buttons/catalog/product/view/addto.phtml</name>
+            </action>
+        </reference>
+    </catalog_product_view>
+
+    <catalog_product_compare_index>
+        <reference name="catalog.compare.list">
+            <action method="setTemplate">
+                <name>ajax_buttons/catalog/product/compare/list.phtml</name>
+            </action>
+        </reference>
+    </catalog_product_compare_index>
+
+    <catalog_product_view>
+        <reference name="product.info">
+            <action method="setTemplate">
+                <name>ajax_buttons/catalog/product/view.phtml</name>
+            </action>
+        </reference>
+    </catalog_product_view>
+
+    <wishlist_index_index>
+        <reference name="customer.wishlist">
+            <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer">
+                <action method="setIsWishlist"><value>true</value></action>
+                <block type="wishlist/customer_wishlist_item_column_remove" name="customer.wishlist.item.remove" as="customer_wishlist_item_remove" template="ajax_buttons/wishlist/item/column/remove.phtml"/>
+                <block type="wishlist/customer_wishlist_item_column_cart" name="customer.wishlist.item.cart" as="customer_wishlist_item_edit" template="wishlist/item/column/cart.phtml">
+                    <action method="setTitle" translate="title">
+                        <title>Add to Cart</title>
+                    </action>
+                    <block type="wishlist/customer_wishlist_item_options" name="customer.wishlist.item.options" />
+                </block>
+            </block>
+            <reference name="customer.wishlist.items">
+                <action method="unsetChild"><name>customer.wishlist.item.image</name></action>
+                <action method="unsetChild"><name>customer.wishlist.item.cart</name></action>
+                <action method="unsetChild"><name>customer.wishlist.item.remove</name></action>
+            </reference>
+        </reference>
+    </wishlist_index_index>
+
+</layout>

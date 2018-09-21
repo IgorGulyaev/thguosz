@@ -1,0 +1,356 @@
+.navbar-header {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.navbar-toggle {
+    width: 30px;
+    padding: 0;
+    margin: 0;
+    float: none;
+    border-radius: 0;
+    border: 0;
+}
+
+.navbar-toggle > span {
+    display: block;
+    background-color: #506d2f;
+    height: 4px;
+}
+
+.navbar-toggle > span + span {
+    margin-top: 6px;
+}
+
+@media (max-width: 767px) {
+
+    .navbar .open > .dropdown-menu > [class*='wraper'] > .dropdown-menu {
+        display: block;
+    }
+
+    .col-left.sidebar,
+    .navbar,
+    .navbar.affix,
+    .dropdown-menu.dropdown-menu-cart,
+    .dropdown-menu.dropdown-menu-account {
+        display: block!important;
+        float: none!important;
+        margin: 0!important;
+        border: 0!important;
+        position: fixed;
+        z-index: 9999;
+        right: -100%;
+        bottom: 0;
+        top: 0;
+        width: 80%;
+        background-color: #fff;
+        height: 100%;
+        -webkit-transition: right 0.3s ease-out;
+        -moz-transition: right 0.3s ease-out;
+        transition: right 0.3s ease-out;
+        -webkit-box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.2);
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .navbar .account-nav,
+    .navbar .account-nav > li {
+        display: block!important;
+        float: none!important;
+    }
+
+    .navbar.in,
+    .col-left.sidebar.in,
+    .cart-nav-active .open .dropdown-menu.dropdown-menu-cart,
+    .account-nav-active .open .dropdown-menu.dropdown-menu-account {
+        right: 0;
+    }
+
+    .backdrop,
+    #acp-overlay {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 999;
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transition: all 0.3s ease-out;
+        -moz-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+    }
+
+    .backdrop {
+        background: #506d2f;
+        background-size: cover;
+    }
+
+    #acp-overlay {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .backdrop:before {
+        display: block;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 22px;
+        color: #fff;
+        margin: 0;
+        width: 20%;
+    }
+
+    /**/
+
+    .body-active .backdrop,
+    #acp-overlay.show {
+        visibility: visible;
+        opacity: 0.9;
+    }
+
+    .body-active .wrapper {
+        overflow: hidden;
+        position: fixed;
+        z-index: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .navbar .dropdown-menu {
+        position: relative;
+        top: auto;
+        border: 0;
+        margin: 0;
+        padding: 0;
+        float: none !important;
+    }
+
+    .navbar ul {
+        margin: 0;
+        padding: 0;
+        float: none;
+    }
+
+    .navbar ul li {
+        float: none!important;
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar ul li a {
+        position: relative;
+        display: block;
+        padding: 15px 20px!important;
+        text-decoration: none;
+        line-height: 1;
+        white-space: normal;
+        cursor: pointer;
+    }
+
+    .navbar > ul li a {
+        line-height: 100%;
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .navbar > ul > li > a:hover,
+    .navbar > ul > li > a:focus {
+
+    }
+
+    .navbar ul > li > a:hover,
+    .navbar ul > li > a:focus {
+        background-color: inherit;
+        text-decoration: none!important;
+    }
+
+    .navbar ul > .open > a,
+    .navbar ul > .open > a:hover,
+    .navbar ul > .open > a:focus {
+        background-color: #506d2f!important;
+        color: #fff!important;
+        cursor: pointer;
+    }
+
+    .navbar .dropdown > a:after {
+        color: #000;
+        font-size: 9px;
+    }
+
+    .navbar .open > a:after {
+        color: #fff!important;
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+@media (min-width: 767px) {
+
+    .navbar-nav-container {
+        background-color: #506d2f;
+    }
+
+    .navbar-nav-container .affix,
+    .navbar-nav-container.affix {
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        right: 0;
+        border-radius: 0;
+        border: 0;
+    }
+
+    .navbar.collapse {
+        display: block!important;
+    }
+
+    .navbar .navbar-nav {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        width: 100%;
+    }
+
+    .navbar .navbar-nav > li {
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        float: none;
+    }
+
+    .navbar .navbar-nav > li > a {
+        color: #fff;
+        text-align: center;
+        padding: 15px 5px;
+        height: auto;
+    }
+
+    .navbar .navbar-nav > .open,
+    .navbar .navbar-nav > .open:hover,
+    .navbar .navbar-nav > .open:active,
+    .navbar .navbar-nav > .open:focus,
+    .navbar .navbar-nav > .active,
+    .navbar .navbar-nav > .active:hover,
+    .navbar .navbar-nav > .active:active,
+    .navbar .navbar-nav > .active:focus,
+    .navbar .navbar-nav > li:hover,
+    .navbar .navbar-nav > li:active,
+    .navbar .navbar-nav > li:focus {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar .navbar-nav > .open > a,
+    .navbar .navbar-nav > .open > a:hover,
+    .navbar .navbar-nav > .open > a:active,
+    .navbar .navbar-nav > .open > a:focus,
+    .navbar .navbar-nav > li > a:hover,
+    .navbar .navbar-nav > li > a:active,
+    .navbar .navbar-nav > li > a:focus {
+        background-color: transparent;
+    }
+
+    .dropdown-menu {
+        border: 0;
+        min-width: 100%;
+    }
+
+    .dropdown-menu.dropdown-wraper {
+        min-width: 600px;
+    }
+
+    .open > .dropdown-menu.dropdown-wraper > .dropdown-wraper-inner > .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-wraper > .dropdown-wraper-inner > .dropdown-menu {
+        position: relative;
+        display: block!important;
+        left: auto!important;
+        top: auto!important;
+        padding: 0!important;
+    }
+
+    .dropdown-wraper > .dropdown-wraper-inner {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    .dropdown-wraper > .dropdown-wraper-inner > .dropdown-menu,
+    .dropdown-wraper > .dropdown-wraper-inner > .dropdown-banner {
+        width: 50%;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        min-width: 0;
+    }
+
+    .dropdown-wraper > .dropdown-wraper-inner > .dropdown-banner > a {
+        display: block;
+    }
+
+    .dropdown-wraper > .dropdown-wraper-inner > .dropdown-banner img {
+        display: block;
+        width: 100%;
+    }
+
+    .dropdown-menu > li > a {
+
+    }
+
+    .dropdown-menu > li.last > a {
+        margin-bottom: 0;
+    }
+
+    .navbar .dropdown-menu .dropdown > a {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .navbar .navbar-nav > .dropdown-right > .dropdown-menu {
+        right: 0;
+        left: auto;
+    }
+
+    .navbar .navbar-nav > .dropdown-right > .dropdown-menu:after,
+    .navbar .navbar-nav > .dropdown-right > .dropdown-menu:before {
+        right: 15px;
+        left: auto;
+    }
+
+    .navbar .navbar-nav > .dropdown-right .dropdown-menu .dropdown-menu {
+        left: auto;
+        right: 100%;
+    }
+}

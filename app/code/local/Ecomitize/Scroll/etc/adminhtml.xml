@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ecomitize_all_scroll_options>
+                                        <title>Ecomitize configuration</title>
+                                    </ecomitize_all_scroll_options>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,13 @@
+<?php foreach ($this->brandCollection as $brand): ?>
+    <div class="category-item">
+        <div class="products-item">
+            <?php if(is_null($brand['image'])): ?>
+                <a href="<?php echo $this->getBaseUrl()?>catalogsearch/result/?brand=<?php echo  $brand['option_id'] . '&q=' . $brand['value'] ?>"><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/catalog/product/placeholder/image.jpg') ?>"></a>
+            <?php else: ?>
+                <a href="<?php echo $this->getBaseUrl()?>catalogsearch/result/?brand=<?php echo  $brand['option_id'] . '&q=' . $brand['value'] ?>"><img class="img-responsive" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'aw_layerednavigation/' . $brand['option_id'] . '/' . $brand['image'] ?>"></a>
+            <?php endif ?>
+            <h3><a href="<?php echo $this->getBaseUrl()?>catalogsearch/result/?brand=<?php echo  $brand['option_id'] . '&q=' . $brand['value'] ?>"><?php echo $brand['value']; ?></a></h3>
+            <p><a href="<?php echo $this->getBaseUrl()?>catalogsearch/result/?brand=<?php echo  $brand['option_id'] . '&q=' . $brand['value'] ?>"><?php echo $this->__('View Products') ?> <?php echo $brand['value']; ?></a></p>
+        </div>
+    </div>
+<?php endforeach ?>

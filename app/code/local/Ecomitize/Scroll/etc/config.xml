@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ecomitize_Scroll>
+            <version>0.0.0.1</version>
+        </Ecomitize_Scroll>
+    </modules>
+    <frontend>
+        <routers>
+            <catalog>
+                <args>
+                    <modules>
+                        <ecomitize_scroll before="Mage_Catalog">Ecomitize_Scroll</ecomitize_scroll>
+                    </modules>
+                </args>
+            </catalog>
+            <catalogsearch>
+                <args>
+                    <modules>
+                        <ecomitize_scroll before="Mage_CatalogSearch">Ecomitize_Scroll</ecomitize_scroll>
+                    </modules>
+                </args>
+            </catalogsearch>
+        </routers>
+        <layout>
+            <updates>
+                <ecomitize_scroll>
+                    <file>ecomitize_scroll.xml</file>
+                </ecomitize_scroll>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <blocks>
+            <page>
+                <rewrite>
+                    <html_pager>Ecomitize_Scroll_Block_Page_Html_Pager</html_pager>
+                </rewrite>
+            </page>
+        </blocks>
+    </global>
+</config>

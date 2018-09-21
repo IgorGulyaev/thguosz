@@ -1,0 +1,6 @@
+<?php
+
+class Ecomitize_All_Block_Adminhtml_Widget_Grid_Column_Filter_Datetime extends Mage_Adminhtml_Block_Widget_Grid_Column_Filter_Datetime
+{
+
+}

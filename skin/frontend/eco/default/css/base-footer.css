@@ -1,0 +1,116 @@
+/* footer */
+
+.footer-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 767px) {
+    .footer-row > .footer-col {
+        width: 50%;
+    }
+}
+
+@media (min-width: 767px) {
+    .footer-nav > ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    .footer-nav > ul > li {
+        width: 33%;
+    }
+    .footer-nav .dropdown-menu {
+        display: block;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        background: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .footer-nav ul > li a {
+        padding: 0;
+        text-transform: none;
+        font-size: 12px;
+        display: inline-block;
+        font-weight: normal;
+        color: inherit;
+    }
+
+    .footer-nav ul > li a:hover,
+    .footer-nav ul > li a:focus {
+        background: none;
+        color: inherit;
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-col {
+        width: 100%;
+    }
+
+    .footer-nav .dropdown-menu {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        background: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        float: none;
+    }
+
+    .footer-nav > ul > li > a {
+        cursor: pointer;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+    }
+
+    .footer-nav > ul > li > a:after {
+        font-size: 12px;
+    }
+
+    .footer-nav > ul > .open > a:after {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+.btn-scroll-top {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: 0;
+}
+
+.btn-scroll-top.affix {
+    opacity: 1;
+    visibility: visible;
+}
+
+/**/

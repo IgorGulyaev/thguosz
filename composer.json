@@ -1,0 +1,35 @@
+{
+  "name": "magento/project",
+  "description": "Magento 1",
+  "type": "project",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "config": {
+    "use-include-path": true
+  },
+  "minimum-stability": "beta",
+  "prefer-stable": true,
+  "require": {
+    "magento-hackathon/magento-composer-installer": "*",
+    "eco/symfix": "*",
+    "eco/lestifix": "^1.0",
+    "gordonlesti/lesti_fpc": "^1.4"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.firegento.com"
+    },
+    {
+      "type": "composer",
+      "url": "https://composer.ecomitize.net"
+    }
+  ],
+  "extra": {
+    "magento-root-dir": "./",
+    "magento-deploystrategy": "symlink",
+    "auto-append-gitignore": true
+  }
+}

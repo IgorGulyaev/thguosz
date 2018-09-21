@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<widgets>
+    <widget_ecomitize_tab type="ecomitize_tab/tab">
+        <name>Tab</name>
+        <description type="desc">Tab with products</description>
+        <parameters>
+            <tab_options>
+                <label>Tab Options</label>
+                <visible>1</visible>
+                <!--<required>0</required>-->
+                <type>ecomitize_tab/adminhtml_system_config_taboptions</type>
+                <!--<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>-->
+                <!--<source_model>Ecomitize_Tab_Model_Options</source_model>-->
+            </tab_options>
+        </parameters>
+    </widget_ecomitize_tab>
+</widgets>

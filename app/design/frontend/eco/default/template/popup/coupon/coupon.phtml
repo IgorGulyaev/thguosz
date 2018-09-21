@@ -1,0 +1,64 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="block-coupon">
+    <form class="form-coupon" action="<?php echo $this->getFormActionUrl() ?>" method="post" id="coupon-validate-detail">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="email" name="email" id="coupon" title="<?php echo $this->__('Enter your email address') ?>" class="input-text required-entry validate-email" placeholder="<?php echo $this->__('Enter your email address') ?>">
+                <span class="input-group-btn">
+                    <button id="button-show-coupon" class="button button-show-coupon" type="submit" title="<?php echo $this->__('Show Me My Coupon') ?>"><?php echo $this->__('Show Me My Coupon') ?></button>
+                </span>
+            </div>
+            <p class="help-block"><?php echo $this->__('* Discount Does Not Apply to Sale or Lito Brand Items.') ?></p>
+        </div>
+    </form>
+    <div class="coupon-promo-code" id="coupon-promo-code">
+        <div class="coupon-title"><?php echo $this->__('Use Promo Code:') ?></div>
+        <button class="button button-coupon-code" data-clipboard-text="3245324642756fvb" data-placement="bottom" data-toggle="tooltip" title="<?php echo $this->__('Click to Copy Clipboard') ?>">
+            3245324642756fvb
+        </button>
+    </div>
+</div>
+<script type="text/javascript">
+    var newsletterSubscriberFormDetail = new VarienForm('coupon-validate-detail');
+    jQuery(document).ready(function ($) {
+        new Clipboard('.button-coupon-code');
+        $(document).on('click', '#coupon-validate-detail #button-show-coupon', function(e) {
+            e.preventDefault();
+            $('#coupon-promo-code').show();
+            $('#coupon-validate-detail').hide();
+            <!--TODO: ajax coupon function -->
+        });
+        $(document).on('click', '.button-coupon-code', function() {
+            var text = '<?php echo $this->__('Copied!') ?>';
+            $(this).attr({
+                'data-original-title' : text,
+                'title' : text
+            }).tooltip('fixTitle').tooltip('show');
+        });
+    });
+</script>

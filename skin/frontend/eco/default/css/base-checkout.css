@@ -1,0 +1,448 @@
+/* opc  */
+
+@media (min-width: 767px) {
+    .opc-row {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        position: relative;
+        margin: 15px -15px;
+    }
+
+    .opc-row > [class*='opc-col-'] {
+        width: 33.33333333%;
+        padding: 0 15px;
+    }
+}
+
+.opc-wrapper-opc,
+.opc-wrapper-opc [class*='opc-col-'],
+.opc-wrapper-opc .review-menu-block {
+    position: relative;
+}
+
+.opc-wrapper-opc h3.open-block {
+
+}
+
+.opc-wrapper-opc .payment-block > h3,
+.opc-wrapper-opc .shipping-block > h3,
+.opc-wrapper-opc .discount-block > h3,
+.opc-wrapper-opc .comment-block > h3 {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.04);
+    padding: 9px 12px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.opc-wrapper-opc h3 > span {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.opc-wrapper-opc h3 > span:after {
+    font-size: 9px;
+}
+
+.opc-wrapper-opc .open-block > span:after {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.opc-wrapper-opc dl,
+.opc-wrapper-opc dd,
+.opc-wrapper-opc label {
+    font-weight: normal;
+}
+
+.opc-wrapper-opc .opc-btn-checkout {
+    display: block;
+    width: 100%;
+}
+
+.opc-wrapper-opc .review-menu-block h3.review-title {
+    margin-top: 0;
+}
+
+.opc-wrapper-opc h5.grand_total {
+    font-size: inherit;
+}
+
+.opc-wrapper-opc h5.grand_total .price {
+    float: right;
+    font-size: inherit;
+}
+
+.opc-wrapper-opc #opc-review-block {
+    display: block!important;
+}
+
+/* checkout */
+
+#checkout-review-table .review-product-img {
+    width: 80px;
+    float: left;
+    margin-right: 15px;
+}
+
+.opc {
+    max-width: 900px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.opc .step-title {
+    cursor: pointer;
+}
+
+.opc .step-title > h2 {
+    font-size: 22px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.opc .step-title .number,
+.opc .step-title a {
+    display: none;
+}
+
+.opc .section {
+    position: relative;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    border-radius: 3px;
+    border: 1px solid #dae2ea;
+    overflow: hidden;
+    padding: 15px 20px;
+}
+
+.opc .section .step {
+    position: relative;
+}
+
+.opc .section.active {
+    border-color: #ec971f;
+    -webkit-animation-name: borderColor;
+    animation-name: borderColor;
+    -webkit-animation-duration: 0.8s;
+    animation-duration: 0.8s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: 3;
+    animation-iteration-count: 3;
+}
+
+@-webkit-keyframes borderColor {
+    0% {
+        border-color: #dae2ea;
+        -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0);
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0);
+    }
+
+    50% {
+        border-color: rgba(239, 157, 60, 1);
+        -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, .05);
+        box-shadow: 0 3px 3px rgba(0, 0, 0, .05);
+    }
+
+    100% {
+        border-color: #dae2ea;
+        -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0);
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes borderColor {
+    0% {
+        border-color: #dae2ea;
+        -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0);
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0);
+    }
+
+    50% {
+        border-color: rgba(239, 157, 60, 1);
+        -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, .05);
+        box-shadow: 0 3px 3px rgba(0, 0, 0, .05);
+    }
+
+    100% {
+        border-color: #dae2ea;
+        -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0);
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0);
+    }
+}
+
+.opc .section.active .step {
+    padding-top: 15px;
+}
+
+.opc .section:not(.active):hover {
+    background-color: #dae2ea;
+}
+
+.opc .section:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.opc .buttons-set {
+    margin-top: 15px;
+    opacity: 1!important;
+}
+
+.opc .please-wait {
+    opacity: 1!important;
+}
+
+.opc .buttons-set p.required,
+.opc .back-link small,
+.opc .please-wait img {
+    display: none;
+}
+
+@media (min-width: 767px) {
+
+    .opc .col2-set [class*='col-'] {
+        float: left;
+        width: 50%;
+    }
+
+    .opc .col2-set .col-1 {
+        padding-right: 15px;
+    }
+
+    .opc .col2-set .col-2 {
+        padding-left: 15px;
+    }
+
+    .opc .buttons-set button {
+        float: right;
+    }
+}
+
+.checkout-onepage-success .col-main {
+    text-align: center;
+}
+
+#remember-me-box .link-tip {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#payment_form_authorizenet .input-box .v-fix,
+#payment_form_authorizenet > li {
+    border: 0!important;
+}
+
+[id='opc-payment'] dd:hover {
+    background: none!important;
+}
+
+[id='opc-payment'] li {
+    border: 0!important;
+}
+
+@media (min-width: 767px) {
+    #authorizenet_cc_type_exp_div .input-box,
+    #payment_form_authorizenet {
+        position: relative;
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    #payment_form_authorizenet .input-box .v-fix,
+    #payment_form_authorizenet > li {
+        float: left;
+        width: 50%;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .sp-methods #payment_form_authorizenet > li {
+        padding: 0!important;
+    }
+}
+
+/* sp methods */
+
+
+.sp-methods {
+    margin-bottom: 15px;
+}
+
+.sp-methods ul > li {
+    padding: 8px;
+}
+
+.sp-methods ul > li > label {
+    display: block;
+    font-weight: normal;
+    margin: 0;
+}
+
+.sp-methods ul > li > label > .price {
+    display: block;
+    float: right;
+}
+
+.sp-methods dt {
+    padding: 8px 0;
+    color: #31a348;
+    text-transform: uppercase;
+}
+
+/**/
+
+.opc .form-list a[href*='customer/account/forgotpassword'] {
+    margin-top: 5px;
+    display: inline-block;
+}
+
+#payment_form_giftvoucher,
+#dd_method_authorizenet_directpost {
+    margin-bottom: 15px;
+}
+
+@media (max-width: 767px) {
+    .giftvoucher [class*='col-xs-'] {
+        width: 100%!important;
+    }
+}
+
+#payment_form_giftvoucher li {
+    font-size: inherit!important;
+    font-weight: inherit!important;
+    line-height: inherit!important;
+    padding: 0!important;
+    margin-bottom: 15px!important;
+}
+
+#checkout-payment-method-load .sp-methods dd {
+    margin-bottom: 0;
+}
+
+#checkout-payment-method-load .sp-methods dd ul {
+    margin-bottom: 15px;
+}
+
+.opc #dd_method_authorizenet ul > li > label,
+.opc #dd_method_ccsave ul > li > label {
+    display: inline-block!important;
+}
+
+.opc #authorizenet_cc_type_cvv_div .input-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.opc #authorizenet_cc_type_cvv_div .v-fix,
+.opc #authorizenet_cc_type_cvv_div .v-fix + a,
+.opc #payment_form_ccsave .v-fix,
+.opc #payment_form_ccsave .v-fix + a {
+    padding: 0;
+}
+
+.opc #authorizenet_cc_type_cvv_div .v-fix,
+.opc #payment_form_ccsave .v-fix {
+    width: auto;
+}
+
+.opc #authorizenet_cc_type_cvv_div .v-fix + .cvv-what-is-this,
+.opc #payment_form_ccsave .v-fix + .cvv-what-is-this {
+    white-space: nowrap;
+    width: 1%;
+}
+
+.opc #authorizenet_cc_type_cvv_div .v-fix,
+.opc #dd_method_ccsave .v-fix {
+    padding-right: 15px;
+}
+
+
+@media (min-width: 767px) {
+    .opc #dd_method_ccsave ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+    }
+    .opc #dd_method_ccsave ul > li {
+        width: 50%;
+        padding: 0 10px;
+    }
+}
+
+.opc #authorizenet_cc_type_cvv_div .input-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.opc #authorizenet_cc_type_cvv_div .v-fix,
+.opc #authorizenet_cc_type_cvv_div .v-fix + a,
+.opc #payment_form_ccsave .v-fix,
+.opc #payment_form_ccsave .v-fix + a {
+    float: none;
+    padding: 0;
+}
+
+.opc #authorizenet_cc_type_cvv_div .v-fix,
+.opc #payment_form_ccsave .v-fix {
+    width: auto;
+}
+
+.opc #authorizenet_cc_type_cvv_div .v-fix + .cvv-what-is-this,
+.opc #payment_form_ccsave .v-fix + .cvv-what-is-this {
+    white-space: nowrap;
+    width: 1%;
+}
+
+.opc #authorizenet_cc_type_cvv_div .v-fix,
+.opc #dd_method_ccsave .v-fix {
+    padding-right: 15px;
+}
+
+.opc #giftvoucher_message > ul {
+    background-color: transparent;
+    padding: 0;
+    text-align: left;
+    font-size: inherit;
+}
+
+.opc #payment_form_giftvoucher #giftvoucher_add[style="display: none;"] {
+    display: inline-block!important;
+    opacity: 0.8;
+}
+
+.opc #payment_form_giftvoucher li .input-box {
+    position: static;
+}
+
+.opc .gift-messages-form {
+    margin-top: 15px;
+}

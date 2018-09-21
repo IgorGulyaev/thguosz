@@ -1,0 +1,35 @@
+/var
+
+/** Conditions for Magestore Giftvoucher extension*/
+
+!/media/
+/media/*
+!/media/giftvoucher/
+/media/giftvoucher/*
+!/media/giftvoucher/import_giftcode_sample.csv
+!/media/giftvoucher/**/default.png
+!media/giftvoucher/pdf/white-background.png
+!media/giftvoucher/pdf/logo/default/logo_print.png
+!media/giftvoucher/template/background/bkg-*.png
+!media/giftvoucher/template/background/simple/bg_*.png
+!media/giftvoucher/template/background/simple/line.png
+!media/giftvoucher/template/barcode/qr.png
+!media/giftvoucher/template/pattern/GC_*.jpg
+
+/** End conditions */
+
+/app/etc/local.xml
+/lib/MaxMind/GeoIP/data/
+/.idea
+/vendor
+/composer.lock
+*.DS_Store
+/app/code/local/Ecomitize/Symfix
+/app/etc/modules/Ecomitize_Symfix.xml
+/app/code/community/Lesti/Fix
+/app/etc/modules/Lesti_Fix.xml
+/app/code/community/Lesti/Fpc
+/app/design/frontend/base/default/layout/fpc.xml
+/app/design/frontend/base/default/template/fpc
+/app/etc/modules/Lesti_Fpc.xml
+/app/etc/fpc.xml.sample

@@ -1,0 +1,17 @@
+<?php if ($this->getStoreCategories()): ?>
+    <div class="section-products section-category-list">
+        <div class="carousel">
+            <div class="owl-carousel">
+                <?php foreach ($this->getStoreCategories() as $_category): ?>
+                    <?php if ($_category->getLevel() == 2): ?>
+                        <?php $image = Mage::getModel('catalog/category')->load($_category->getId())->getThumbnail() ?>
+                            <a href="<?php echo $this->getCategoryUrl($_category)?>">
+                                <?php if ($image): ?><img src="<?php echo $this -> cropImage( 'media/catalog/category/' , $image, 300, 300, false); ?>" alt="<?php echo $this->htmlEscape($_category->getName()) ?>"><?php endif; ?>
+                                <span><?php echo $_category->getName()?></span>
+                            </a>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

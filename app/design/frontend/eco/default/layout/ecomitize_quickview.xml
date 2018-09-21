@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>varien/product.js</script></action>
+            <action method="addJs"><script>varien/configurable.js</script></action>
+            <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name><params/><!--<if/><condition>can_load_calendar_js</condition>--></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar.js</name><!--<params/><if/><condition>can_load_calendar_js</condition>--></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name><!--<params/><if/><condition>can_load_calendar_js</condition>--></action>
+            <action method="addItem"><type>skin_js</type><name>js/quickview/quickview.js</name><params><![CDATA[data-group="js001"]]></params></action>
+            <action method="addItem"><type>skin_js</type><name>js/amasty/amconf/configurable.js</name><params><![CDATA[data-group="js001"]]></params></action>
+            <action method="addItem" ifconfig="amconf/zoom/enable"><type>skin_js</type><name>js/z_amasty/plugins/jquery.elevatezoom.js</name><params/></action>
+            <action method="addItem" ifconfig="amconf/carousel/enable"><type>skin_js</type><name>js/z_amasty/plugins/jquery.carouFredSel-6.2.1.js</name><params/></action>
+
+        </reference>
+        <reference name="after_body_start">
+            <block type="core/template" template="quickview/container.phtml" name="quickview.container" />
+        </reference>
+    </default>
+    <ecomitize_quickview_quickview_view>
+        <remove name="root" />
+        <block type="core/text_list" name="content" output="toHtml">
+            <block type="catalog/product_view" name="product.info" template="quickview/quickview/view.phtml">
+                <block type="catalog/product_view_media" name="product.info.media" as="media" template="catalog/product/view/media.phtml">
+                    <action method="setResizeImgW"><value>555</value></action>
+                    <action method="setResizeImgH"><value>555</value></action>
+                    <action method="setResizeThumbnailsW"><value>100</value></action>
+                    <action method="setResizeThumbnailsH"><value>100</value></action>
+                    <action method="setQuality"><value>100</value></action>
+                    <action method="setThumbnailsPosition"><value>h</value></action>
+                    <!--<action method="setThumbnailsPosition"><value>h</value></action>-->
+                    <action method="setZoom"><value>false</value></action>
+                    <action method="setZoomPositionOutside"><value>true</value></action>
+                    <action method="setZoomMagnify"><value>2</value></action>
+                </block>
+                <block type="catalog/product_view" name="product.info.rating.star" as="rating.star" template="catalog/product/view/rating.phtml"/>
+                <action method="setTierPriceTemplate"><template>catalog/product/view/tierprices.phtml</template></action>
+                <block type="catalog/product_view_additional" name="product.info.additional" as="product_additional_data" />
+                <block type="core/template" name="product.info.special.price" as="special.price" template="catalog/product/view/special_price.phtml"/>
+                <block type="catalog/product_view" name="product.info.sharing" as="sharing" template="catalog/product/view/sharing.phtml"/>
+                <block type="catalog/product_view" name="product.info.addto2" as="addto2" template="catalog/product/view/addto.phtml"/>
+
+                <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="quickview/quickview/addtocart.phtml"/>
+                <block type="catalog/product_list_related" name="related.products" as="related_products" template="quickview/quickview/list/related.phtml">
+                    <action method="setTitle"><value>Recommended for this product</value></action>
+                    <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer"></block>
+                </block>
+            </block>
+        </block>
+    </ecomitize_quickview_quickview_view>
+</layout>

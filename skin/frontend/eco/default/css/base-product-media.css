@@ -1,0 +1,198 @@
+/* product media */
+
+.product-view .product-img-box {
+    margin-bottom: 25px;
+}
+
+/* zoom */
+
+.product-view .product-img-box .product-img {
+    position: relative;
+}
+
+.product-zoom,
+.zoomImg {
+    z-index: 99999;
+}
+
+.product-zoom {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    border: 1px solid #31a348;
+    display: none!important;
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+    .product-zoom {
+        left: 0;
+        right: 0;
+        top: 100%;
+        height: 100%;
+        bottom: auto;
+    }
+}
+
+.product-zoom.active {
+    display: block!important;
+}
+
+/**/
+
+.products-item .products-item-img {
+    margin-bottom: 20px;
+}
+
+.products-item .products-item-img > a,
+.product-view .product-img-box .product-img > a {
+    display: block;
+    text-align: center;
+}
+
+span.product-image {
+    display: block;
+}
+
+.products-item .product-image img {
+    display: block!important;
+    width: 100%;
+}
+
+.product-view .product-img-box .product-img.product-img-one img,
+.product-view .product-img-box .product-image.product-img-one img {
+    display: inline-block;
+    max-width: 90%;
+    height: auto;
+}
+
+@media (min-width: 767px) {
+    .master-slider-v {
+        padding-left: 115px;
+        position: relative;
+    }
+    .master-slider-h {
+        padding-bottom: 115px;
+    }
+}
+
+.master-slider .ms-nav-next,
+.master-slider .ms-nav-prev,
+.master-slider .ms-thumblist-fwd,
+.master-slider .ms-thumblist-bwd {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -30px;
+    cursor: pointer;
+    padding: 20px;
+    text-align: center;
+}
+
+.master-slider .ms-nav-next,
+.master-slider .ms-thumblist-bwd {
+    left: auto;
+    right: 0;
+}
+
+.master-slider .ms-nav-next:before,
+.master-slider .ms-nav-prev:before,
+.master-slider-h .master-slider .ms-thumblist-fwd:before,
+.master-slider-h .master-slider .ms-thumblist-bwd:before {
+    font-size: 12px;
+}
+
+.master-slider-v .master-slider .ms-thumblist-fwd:before,
+.master-slider-v .master-slider .ms-thumblist-bwd:before {
+    font-size: 8px;
+}
+
+.master-slider-v .master-slider .ms-thumblist-fwd,
+.master-slider-v .master-slider .ms-thumblist-bwd {
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.master-slider-v .master-slider .ms-thumblist-fwd {
+    top: 0;
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+}
+
+.master-slider-v .master-slider .ms-thumblist-bwd {
+    top: auto;
+    bottom: 0;
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+}
+
+.master-slider-h .master-slider .ms-thumblist-fwd,
+.master-slider-h .master-slider .ms-thumblist-bwd {
+    text-align: center;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align : center;
+    -webkit-align-items : center;
+    -moz-box-align : center;
+    -ms-flex-align : center;
+    align-items : center;
+    -webkit-box-pack : center;
+    -moz-box-pack : center;
+    -ms-flex-pack : center;
+    -webkit-justify-content : center;
+    -ms-justify-content : center;
+    justify-content : center;
+}
+
+.master-slider-h .master-slider .ms-thumb-list.ms-dir-h .ms-thumblist-fwd {
+    left: 0;
+    background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 );
+}
+
+.master-slider-h .master-slider .ms-thumb-list.ms-dir-h .ms-thumblist-bwd {
+    right: 0;
+    background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+    background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+}
+
+.master-slider-v .master-slider .ms-thumb-list.ms-dir-v {
+    width: 100px;
+    margin-left: -100px;
+    padding: 30px 0;
+}
+
+.master-slider-v .master-slider .ms-thumb-list.ms-dir-v .ms-thumbs-cont {
+    top: 0!important;
+}
+
+.master-slider-v .master-slider .ms-thumb-list.ms-dir-v .ms-thumb-frame {
+    float: none;
+    padding-bottom: 15px;
+}
+
+.master-slider-h .master-slider .ms-thumb-list.ms-dir-h .ms-thumb-frame {
+    float: left;
+    width: 100px;
+}
+
+.master-slider-h .master-slider .ms-thumb-list.ms-dir-h {
+    margin-top: 15px;
+}

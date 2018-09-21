@@ -1,0 +1,18 @@
+<?php
+    $newsProducts = $this->getLoadedProductCollection();
+    $imageHelper = $this->helper('catalog/image');
+?>
+<?php if(count($newsProducts->getItems())): ?>
+    <div class="section-products news-product">
+        <h3 class="section-title"><span><?php echo $this->__('News Products') ?></span></h3>
+        <div class="carousel">
+            <div class="owl-carousel">
+                <?php $productRenderer = $this->getChild('product_renderer'); ?>
+                <?php foreach ($newsProducts as $np): ?>
+                    <?php $productRenderer->setProduct($np); ?>
+                    <?php echo $productRenderer->toHtml(); ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

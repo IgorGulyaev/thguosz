@@ -1,0 +1,57 @@
+<?php
+/**
+ * Header template
+*/
+?>
+<div class="backdrop"></div>
+<div class="content-wrapper">
+    <header>
+        <div class="header">
+            <div class="header-top">
+                <div class="container">
+                    <ul class="nav visible-xs">
+                       <li><a class="btn-back" href="#"><span><?php echo $this->__('Back') ?></span></a></li>
+                    </ul>
+                    <?php echo $this->getChildHtml('topLinks'); ?>
+                </div>
+            </div>
+            <div class="container">
+                <div class="header-row">
+                    <div class="header-col header-col-navbar">
+                        <div class="navbar-header">
+                            <button class="navbar-toggle collapsed nav-container-open" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="header-col header-col-logo">
+                        <?php if ($this->getIsHomePage()):?>
+                            <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img class="img-responsive" src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>"></a></h1>
+                        <?php else:?>
+                            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img class="img-responsive" src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>"></a>
+                        <?php endif?>
+                    </div>
+                    <div class="header-col header-col-search">
+                        <?php echo $this->getChildHtml('topSearch') ?>
+                    </div>
+                    <div class="header-col header-col-cart">
+                        <ul class="header-nav-cart">
+                            <li class="header-cart-dropdown dropdown">
+                                <?php echo $this->getChildHtml('cart_link'); ?>
+                                <ul class="dropdown-menu dropdown-menu-cart pull-right">
+                                    <li class="header-minicart">
+                                        <?php echo $this->getChildHtml('minicart_head') ?>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->getChildHtml('topMenu'); ?>
+    </header>
+<?php echo $this->getChildHtml('topContainer'); ?>
+

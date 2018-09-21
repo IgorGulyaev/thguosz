@@ -1,0 +1,9 @@
+<?php
+$_product = $this->getProduct();
+$sticker = Mage::helper('ecomitize_all')->getSticker($_product->getId());
+?>
+<?php if ($sticker): ?>
+    <span class="products-sticker">
+        <span class="sticker-<?php echo strtolower($sticker) ?>"><?php echo $sticker; ?></span>
+    </span>
+<?php endif; ?>

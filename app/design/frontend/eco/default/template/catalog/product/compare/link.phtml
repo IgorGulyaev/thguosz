@@ -1,0 +1,8 @@
+<?php $_productCollection = Mage::helper('catalog/product_compare')->getItemCollection(); ?>
+<li id="compare-link">
+    <?php if(count($_productCollection->getItems())): ?>
+        <a href="<?php echo $this->getUrl('catalog/product_compare'); ?>"><span><?php echo $this->__('My Comparison List') ?></span><span class="count"><?php echo count($_productCollection->getItems()) ?></span></a>
+    <?php else: ?>
+        <a href="<?php echo $this->getUrl('catalog/product_compare'); ?>"><span><?php echo $this->__('My Comparison List') ?></span></a>
+    <?php endif; ?>
+</li>

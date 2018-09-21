@@ -1,0 +1,86 @@
+/* hide */
+
+header a.paypal-auth:before,
+br:last-child,
+.currently .actions,
+.currently .block-subtitle,
+.catalog-product-view .add-to-links .separator,
+form p.required,
+.back-link > a > small,
+.add-to-box .or,
+#giftvoucher_ajaxload img,
+#giftvoucher_wait img,
+.wishlist-index-index .back-link,
+.opc-messages .opc-messages-action,
+.opc-messages .close-message-wrapper,
+.opc-wrapper-opc .md-modal,
+.opc-wrapper-opc .opc-menu p.left,
+.opc-wrapper-opc a.review-total,
+.opc-wrapper-opc .review-title,
+.paypal-or,
+.form-search label,
+.form-search .button > span,
+.products-item .amconf-block,
+#my-orders-table .separator {
+    display: none!important;
+}
+
+@media (max-width: 767px) {
+    .sorter,
+    .products-item .btn.btn-compare,
+    .product-view .ms-thumb-list,
+    .breadcrumb,
+    .owl-nav,
+    .owl-dots,
+    .col-right,
+    .header-top .links,
+    .owl-carousel .owl-prev,
+    .owl-carousel .owl-next,
+    .toolbar-pager label,
+    .product-zoom,
+    .product-zoom.active,
+    .products-item .add-to-links > li > a > span,
+    .account-nav > li > a > span:not(.count),
+    header .header-top > .container:before,
+    header .header-top > .container:after,
+    .navbar-active #acp-overlay,
+    .catalog-product-compare-index h1 .button-print,
+    .btn-filter > span {
+        display: none!important;
+    }
+
+    .block .block-content.no-display {
+        display: block!important;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+
+}
+
+@media (min-width: 767px) and (max-width: 1200px) {
+
+}
+
+@media (min-width: 991px) and (max-width: 1200px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 767px) {
+    .btn-show-all,
+    .col-sorting-filter-button,
+    .navbar .account-nav,
+    .navbar .account-nav > li,
+    .header-row > .header-col-navbar,
+    .backdrop:before,
+    .toolbar .toolbar-pager > .filter {
+        display: none!important;
+    }
+    .touchevents .btn-show-all {
+        display: block!important;
+    }
+}

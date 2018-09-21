@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ecomitize_All>
+            <active>true</active>
+            <codePool>local</codePool>
+	        <depends>
+	            <Uni_Banner/>
+                <Mage_Sales/>
+                <Amasty_Conf />
+            </depends>
+        </Ecomitize_All>
+    </modules>
+</config>

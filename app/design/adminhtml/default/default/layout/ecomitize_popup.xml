@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_widget_instance_edit>
+        <reference name="head">
+            <action method="addJs"><script>popup/popup.js</script></action>
+        </reference>
+    </adminhtml_widget_instance_edit>
+</layout>

@@ -1,0 +1,99 @@
+<?php
+    /**
+     * @author Amasty Team
+     * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+     * @package Amasty_Conf
+     * @upgrade by Navrocky Sergey - Ecomitize 2016
+     */
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+    $imageWidth = (int)Mage::getStoreConfig('amconf/size/preview_width');
+    $imageHeight = (int)Mage::getStoreConfig('amconf/size/preview_height');
+    $smallImageSize = (int)Mage::getStoreConfig('amconf/size/thumb');
+    $itemCount = (int)Mage::getStoreConfig('amconf/carousel/visible_items');
+    $resizeThumbnailW  = ($this->getResizeThumbnailW()) ? $this->getResizeThumbnailW() : '220';
+    $resizeThumbnailH  = ($this->getResizeThumbnailH()) ? $this->getResizeThumbnailH() : '130';
+    $thumbnailsPosition  = ($this->getThumbnailsPosition()) ? $this->getThumbnailsPosition() : 'v';
+    $zoomMagnify  = ($this->getZoomMagnify()) ? $this->getZoomMagnify() : '1';
+?>
+<?php $_img = '<a class="fancybox product-img-zoom" href="'.$this->helper('catalog/image')->init($_product, 'image')->resize($imageWidth, $imageHeight).'"><img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($imageWidth, $imageHeight).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'"></a>'; ?>
+<?php if (count($this->getGalleryImages()) > 1): ?>
+    <div class="product-img master-slider-<?php echo $thumbnailsPosition; ?>">
+        <?php if ($this->getZoom()): ?><?php if($this->getZoomPositionOutside()) : ?><div class="product-zoom"></div><?php endif; ?><?php endif; ?>
+        <div class="master-slider" id="masterslider">
+            <?php foreach ($this->getGalleryImages() as $_image): ?>
+                <a target="_blank" data-thumbnail="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($resizeThumbnailW, $resizeThumbnailH); ?>" href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()); ?>" class="ms-slide<?php if ($this->getZoom()): ?> product-img-zoom<?php endif;?> fancybox">
+                    <img data-src="<?php echo $this->helper('catalog/image')->init($_product, 'image', $_image->getFile())->resize($imageWidth, $imageHeight); ?>" src="<?php echo $this->getSkinUrl('images/blank.gif'); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"  title="<?php echo $this->htmlEscape($_image->getLabel()) ?>">
+                    <img class="ms-thumb" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($resizeThumbnailW, $resizeThumbnailH); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>">
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <script type="text/javascript">
+        /* Support MasterSlider http://docs.averta.net/display/MSJQ/Quick+Start */
+        jQuery(document).ready(function ($) {
+            var slider = new MasterSlider();
+            slider.setup('masterslider' , {
+                width: <?php echo $imageWidth; ?>,
+                height: <?php echo $imageHeight; ?>,
+                space: 0,
+                loop: true
+            });
+            slider.control('lightbox');
+            slider.control('arrows');
+            slider.control('thumblist' , {
+                autohide: false,
+                dir: '<?php echo $thumbnailsPosition; ?>',
+                arrows: true
+            });
+            $('.fancybox').attr('rel', 'gallery').fancybox({
+                padding: 0,
+                helpers: {
+                    thumbs: {
+                        width  : 100,
+                        height : 100,
+                        source : function(current) {
+                            return $(current.element).data('thumbnail');
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+<?php else: ?>
+    <?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+        <div class="product-img product-img-one">
+            <?php if ($this->getZoom()): ?><?php if($this->getZoomPositionOutside()) : ?><div class="product-zoom"></div><?php endif; ?><?php endif; ?>
+            <?php echo $_helper->productAttribute($_product, $_img, 'image'); ?>
+        </div>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $('.fancybox').attr('rel', 'gallery').fancybox({
+                    padding: 0
+                });
+            });
+        </script>
+    <?php endif;?>
+<?php endif;?>
+<?php if ($this->getZoom()): ?>
+    <script type="text/javascript" src="<?php echo Mage::getDesign()->getSkinUrl('js/jquery.zoom.js', array()) ?>"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            var productZoom = $('.product-img-zoom');
+            var productZoomContainer = $('.product-zoom');
+            if(window.matchMedia('(min-width: 767px)').matches) {
+                $(productZoom).zoom({
+                    <?php if($this->getZoomPositionOutside()) : ?>
+                    target: productZoomContainer,
+                    <?php endif;?>
+                    magnify: <?php echo $zoomMagnify; ?>
+                });
+                $(productZoom).mouseover(function () {
+                    $(productZoomContainer).addClass('active');
+                }).mouseout(function () {
+                    $(productZoomContainer).removeClass('active');
+                });
+            }
+        });
+    </script>
+<?php endif;?>

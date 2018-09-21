@@ -1,0 +1,28 @@
+<?php if( count($this->attributes) === 1 ): ?>
+    <div class="section-tab"><?php echo $this->getBlock($this->attributes[0]['attribute'])->setTitle($this->attributes[0]['title'])->toHtml();?></div>
+<?php else: ?>
+    <div class="section-tab">
+        <div class="widget widget-tabs">
+            <div class="tabpanel tabpanel-cookie" id="widget-tabs-tabpanel">
+                <ul class="nav nav-tabs responsive">
+                    <?php foreach ($this->attributes as $key => $attribute): ?>
+                        <?php if( $key == 0 ): ?>
+                            <li class="active"><a href="#tab-<?php echo $attribute['attribute']?>" aria-controls="tab-<?php echo $attribute['attribute']?>" role="tab" data-toggle="tab"><?php echo $attribute['title'];?></a></li>
+                        <?php else: ?>
+                            <li><a href="#tab-<?php echo $attribute['attribute']?>" aria-controls="tab-<?php echo $attribute['attribute']?>" role="tab" data-toggle="tab"><?php echo $attribute['title'];?></a></li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
+                <div class="tab-content">
+                    <?php foreach ($this->attributes as $key => $attribute): ?>
+                        <?php if( $key == 0 ): ?>
+                            <div class="tab-pane active" id="tab-<?php echo $attribute['attribute']; ?>"><div class="section-products section-products-tabs <?php echo $attribute['attribute']?>-product-tabs"><?php echo $this->getBlock($attribute['attribute'])->toHtml();?></div></div>
+                        <?php else: ?>
+                            <div class="tab-pane" id="tab-<?php echo $attribute['attribute']?>"><div class="section-products section-products-tabs <?php echo $attribute['attribute']?>-product-tabs"><?php echo $this->getBlock($attribute['attribute'])->toHtml();?></div></div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<widgets>
+    <ecomitize_popup type="ecomitize_popup/popup" >
+        <name>Popup</name>
+        <description type="desc">Popup</description>
+        <parameters>
+            <popup_enable translate="label">
+                <label>Enable Popup</label>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>ecomitize_popup/options_enable</source_model>
+            </popup_enable>
+            <popup_type translate="label">
+                <label>Popup type</label>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>ecomitize_popup/options_type</source_model>
+            </popup_type>
+            <popup_animation_animatelist translate="label">
+                <label>Popup animation type</label>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>ecomitize_popup/options_animatelist</source_model>
+            </popup_animation_animatelist>
+            <popup_size>
+                <label>Popup size</label>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>ecomitize_popup/options_size</source_model>
+            </popup_size>
+            <popup_title>
+                <label>Popup title</label>
+                <visible>1</visible>
+                <type>text</type>
+            </popup_title>
+            <popup_appearanceinterval>
+                <label>Appearance interval</label>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>ecomitize_popup/options_appearanceinterval</source_model>
+            </popup_appearanceinterval>
+            <popup_interval_dontshow>
+                <label>Show popup after disabling</label>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>ecomitize_popup/options_appearanceinterval</source_model>
+            </popup_interval_dontshow>
+            <popup_image>
+                <!--after adding ext https://github.com/aijko/aijko-widgetimagechooser -->
+                <label>Popup image background </label>
+                <visible>1</visible>
+                <type>widgetimagechooser/chooser</type>
+            </popup_image>
+            <popup_coupon_image>
+                <!--after adding ext https://github.com/aijko/aijko-widgetimagechooser -->
+                <label>Popup image coupon success</label>
+                <visible>1</visible>
+                <type>widgetimagechooser/chooser</type>
+            </popup_coupon_image>
+            <popup_appearance_time>
+                <label>Popup appearance speed</label>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>ecomitize_popup/options_speed</source_model>
+            </popup_appearance_time>
+            <popup_disappearance_time>
+                <label>Popup disappearance speed</label>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>ecomitize_popup/options_speed</source_model>
+            </popup_disappearance_time>
+            <popup_video_from>
+                <label>Video from</label>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>ecomitize_popup/options_videofrom</source_model>
+            </popup_video_from>
+            <popup_video_autoplay translate="label">
+                <label>Popup video autoplay</label>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>ecomitize_popup/options_enable</source_model>
+            </popup_video_autoplay>
+            <popup_youtube_link>
+                <label>Youtube video id</label>
+                <visible>1</visible>
+                <type>text</type>
+            </popup_youtube_link>
+            <popup_vimeo_link>
+                <label>Vimeo video id</label>
+                <visible>1</visible>
+                <type>text</type>
+            </popup_vimeo_link>
+            <popup_iframe_link>
+                <label>Iframe link</label>
+                <visible>1</visible>
+                <type>text</type>
+            </popup_iframe_link>
+            <popup_textarea>
+                <label>Popup text</label>
+                <visible>1</visible>
+                <type>ecomitize_popup/widget_wysiwyg</type>
+            </popup_textarea>
+        </parameters>
+    </ecomitize_popup>
+</widgets>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ecomitize_AjaxButtons>
+            <version>0.0.0.1</version>
+        </Ecomitize_AjaxButtons>
+    </modules>
+    <frontend>
+        <routers>
+            <ajaxbuttons>
+                <use>standard</use>
+                <args>
+                    <module>Ecomitize_AjaxButtons</module>
+                    <frontName>ajaxbuttons</frontName>
+                </args>
+            </ajaxbuttons>
+            <catalog>
+                <args>
+                    <modules>
+                        <ecomitize_ajaxbuttons before="Mage_Catalog">Ecomitize_AjaxButtons</ecomitize_ajaxbuttons>
+                    </modules>
+                </args>
+            </catalog>
+            <wishlist>
+                <args>
+                    <modules>
+                        <ecomitize_ajaxbuttons before="Mage_Wishlist">Ecomitize_AjaxButtons</ecomitize_ajaxbuttons>
+                    </modules>
+                </args>
+            </wishlist>
+        </routers>
+        <layout>
+            <updates>
+                <ajaxbuttons>
+                    <file>ajax_buttons.xml</file>
+                </ajaxbuttons>
+            </updates>
+        </layout>
+    </frontend>
+</config>

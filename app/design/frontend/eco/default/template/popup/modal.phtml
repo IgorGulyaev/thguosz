@@ -1,0 +1,79 @@
+<?php
+
+$customerCoockie = $this->_getCookiesAppearanceinterval();
+$modalSizeClass = 'modal-'.$this->_modalSize;
+$modalType = $this->_modalType;
+$modalImg = $this->_modalImage;
+$modalAppearanceTime = $this->_getmodalAppearanceTime(); // _getmodalDisappearanceTime()
+$title = $this->_getTitle();
+$dontShowCookies = $this->_getCookiesintervaldontshow();
+$enableModal = $this->_getEnable();
+$modalId = $this->getNameInLayout();
+?>
+<?php if(!$customerCoockie && !$dontShowCookies && $enableModal): ?>
+    <?php if($this->_modalAppearanceinterval) $this->_setCookiesAppearanceinterval(); ?>
+    <div class="modal<?php if ($this->getData('popup_animation_animatelist')): ?> animated <?php echo $this->getData('popup_animation_animatelist'); ?><?php else: ?> fade<?php endif; ?> modal-popup modal-sale modal-sale-<?php echo $modalType; ?> modal-sale-<?php echo $modalId; ?>" data-backdrop="false">
+        <div class="modal-dialog <?php echo $this->_getModalSizeClass(); ?>">
+            <div class="modal-content"<?php if ($modalType == 'subscribe' || $modalType == 'coupon'): ?> style="background-image: url(<?php echo $this->_getBgBanner($this->_modalImage); ?>);"<?php endif; ?> data-after-click="<?php echo $this->_getBgBanner($this->_modalCouponImage); ?>">
+                <div class="modal-header">
+                    <?php if($title): ?><h4 class="modal-title"><?php echo $title; ?></h4><?php endif; ?>
+                    <button type="button" class="close" id="closeModalButton" data-dismiss="modal"><i class="icon-close"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body-content">
+                        <?php if ($modalType == 'subscribe'): ?>
+                            <?php if($title): ?><h3><?php echo $title; ?></h3><?php endif; ?>
+                            <?php if ($this->_modalText): ?><div class="modal-text"><?php echo $this->_modalText ?></div><?php endif; ?>
+                            <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml(); ?>
+                        <?php elseif ($modalType == 'coupon'): ?>
+                            <?php if($title): ?><h3><?php echo $title; ?></h3><?php endif; ?>
+                            <?php if ($this->_modalText): ?><div class="modal-text"><?php echo $this->_modalText ?></div><?php endif; ?>
+                            <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('popup/coupon/coupon.phtml')->toHtml(); ?>
+                        <?php elseif ($modalType == 'banner'): ?>
+                            <a class="modal-banner-link" href="<?php echo $this->_modalIframeLink ?>"><img src="<?php echo $this->_getBgBanner($this->_modalImage); ?>" alt="<?php echo $title; ?>"></a>
+                        <?php elseif ($modalType == 'video'): ?>
+                            <?php if ($this->_modalVideoFrom == 'vimeo'): ?>
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/<?php echo $this->_modalVimeoLink ?><?php if ($this->_modalVideoAutoplay): ?>?autoplay=1<?php endif; ?>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($this->_modalVideoFrom == 'youtube'): ?>
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $this->_modalYoutubeLink ?>?showinfo=0<?php if ($this->_modalVideoAutoplay): ?>&autoplay=1<?php endif; ?>" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            <?php endif; ?>
+                        <?php elseif ($modalType == 'iframe'): ?>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="<?php echo $this->_modalIframeLink ?>"></iframe>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (!$modalType == 'subscribe'): ?><?php if ($this->_modalText): ?><div class="modal-text"><?php echo $this->_modalText ?></div><?php endif; ?><?php endif; ?>
+                    </div>
+                    <div class="input-box modal-dont-show">
+                        <input type="checkbox" name="dont_show_popup" title="<?php echo $this->__('Don`t show popup again') ?>" value="1" id="dont_show_popup_<?php echo $modalId; ?>" class="checkbox">
+                        <label for="dont_show_popup_<?php echo $modalId; ?>"><?php echo $this->__('Don`t show popup again'); ?></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('.modal-sale-<?php echo $modalId; ?>').modal('show');
+            $('.modal-sale-<?php echo $modalId; ?> .close').on('click', function() {
+                $('.modal-sale-<?php echo $modalId; ?> iframe').attr('src', '');
+                if($('.modal-sale-<?php echo $modalId; ?> #dont_show_popup_<?php echo $modalId; ?>').is(':checked') ){
+                    $.post( '/popup/popup/dontshow/time/<?php echo $this->getModalIntervalDontshow(); ?>/unicName/<?php echo $this->getNameInLayout(); ?>', function(data) {
+                        /*console.log(data);*/
+                    });
+                }
+            });
+        });
+    </script>
+    <style>
+        .modal-sale-<?php echo $modalId; ?> {
+            -webkit-animation-duration: <?php echo $modalAppearanceTime; ?>s;
+            animation-duration: <?php echo $modalAppearanceTime; ?>s;
+        }
+    </style>
+<?php endif; ?>

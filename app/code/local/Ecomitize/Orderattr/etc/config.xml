@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Ecomitize_Orderattr>
+            <version>1.0.0</version>
+        </Ecomitize_Orderattr>
+    </modules>
+    <global>
+        <models>
+            <ecomitize_orderattr>
+                <class>Ecomitize_Orderattr_Model</class>
+            </ecomitize_orderattr>
+            <sales>
+                <rewrite>
+                    <order_api>Ecomitize_Orderattr_Model_Sales_Order_Api</order_api>
+                    <order_api_v2>Ecomitize_Orderattr_Model_Sales_Order_Api</order_api_v2>
+                </rewrite>
+            </sales>
+        </models>
+    </global>
+</config>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>eco/jquery/jquery-1.10.2.min.js</script></action>
+            <action method="addJs"><script>eco/jquery/noconflict.js</script></action>
+            <action method="addJs"><script>eco/admin_menu/menu.js</script></action>
+        </reference>
+    </default>
+</layout>

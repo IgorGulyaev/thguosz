@@ -1,0 +1,68 @@
+<div id="ecomitizeModalQuickView" class="modal modal-quick-view animated zoomIn hinge-05 in">
+    <div class="modal-dialog">
+        <?php
+            $_helper = $this->helper('catalog/output');
+            $_product = $this->getProduct();
+        ?>
+        <script type="text/javascript">
+            var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+        </script>
+        <div class="modal-content">
+            <button id="ecomitizeModalQuickViewClose" type="button" class="close" data-dismiss="modal"><i class="icon-close"></i></button>
+            <div class="modal-body" id="quickViewContainer">
+                <div class="product-shop">
+                    <h1 class="visible-xs"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                    <div class="quick-view-row">
+                        <div class="quick-view-col quick-view-left">
+                            <div class="product-img-box">
+                                <?php echo $this->getChildHtml('media') ?>
+                            </div>
+                        </div>
+                        <div class="quick-view-col quick-view-right">
+                            <h1 class="hidden-xs"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                            <?php echo $this->getChildHtml('rating.star') ?>
+                            <?php echo $this->getChildHtml('alert_urls') ?>
+                            <?php echo $this->getChildHtml('product_type_data') ?>
+                            <?php echo $this->getTierPriceHtml() ?>
+                            <?php echo $this->getChildHtml('extrahint') ?>
+                            <?php echo $this->getChildHtml('special.price') ?>
+                            <div class="add-to-box">
+                                <?php echo $this->getChildHtml('out_of_stock') ?>
+                                <?php echo $this->getChildHtml('addtocart') ?>
+                                <div class="add-to-box-inner">
+                                    <?php echo $this->getChildHtml('addto') ?>
+                                </div>
+                            </div>
+                            <?php if ($_product->getShortDescription()): ?>
+                                <div class="short-description">
+                                    <?php echo $_product->getShortDescription(); ?>
+                                </div>
+                            <?php endif; ?>
+                            <a class="button btn-show-more" href="<?php echo $_product->getProductUrl(); ?>"><?php echo $this->__('Подробнее') ?></a>
+                            <div class="product-view-sharing">
+                                <?php echo $this->getChildHtml('sharing'); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $this->getChildHtml('related_products'); ?>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        var quickViewModalContent = $('#ecomitizeModalQuickView .modal-content');
+        modalQuickView();
+        $(window).on('resize', modalQuickView);
+        function modalQuickView() {
+            if(window.matchMedia('(min-width: 767px)').matches) {
+                setTimeout(function () {
+                    $(quickViewModalContent).css('margin-top', Math.max(0, ($(window).height() - quickViewModalContent.height() - 90) / 2));
+                }, 50);
+            } else {
+                $(quickViewModalContent).css('margin-top', 0);
+            }
+        }
+    });
+</script>

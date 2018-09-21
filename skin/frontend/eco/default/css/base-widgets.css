@@ -1,0 +1,74 @@
+/* widgets */
+
+.widget-category-list {
+    position: relative;
+    margin: 0 -15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.widget-category-list .item {
+    padding: 15px;
+
+}
+
+.widget-category-list .item,
+.widget-category-list .item span {
+    display: block;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .widget.widget-tabs .collapse {
+        display: block!important;
+        height: 0!important;
+        overflow: hidden;
+    }
+
+    .widget.widget-tabs .collapse.in {
+        display: block!important;
+        height: auto!important;
+        overflow: visible;
+    }
+
+    .section-tab .widget.widget-tabs .panel-body {
+        padding-left: 0!important;
+        padding-right: 0!important;
+    }
+
+    .widget.widget-tabs .panel {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .widget.widget-tabs {
+        position: relative;
+        margin: 0 -15px;
+    }
+
+    .widget.widget-tabs .section-products {
+        margin: 0;
+    }
+}
+
+/**/
+
+.widget-tabs .tab-content > .tab-pane {
+    display: block!important;
+    visibility: hidden;
+    height: 0!important;
+    overflow: hidden;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+}
+
+.widget-tabs .tab-content > .tab-pane.active {
+    visibility: visible;
+    height: auto!important;
+    overflow: visible;
+}

@@ -1,0 +1,71 @@
+<?php
+$helper = $this->helper('catalog/output');
+$_product = $this->getProduct();
+$isWishList = $this->getIsWishlist();
+$isCompareList = $this->getIsCompareList();
+$isListMode = $this->getIsListMode();
+$isCatalogProductList = (bool)$this->getIsProductList();
+if($isWishList){
+    $_product = $this->getProduct()->getProduct();
+}
+$imageType = $this->getImageType() ? $this->getImageType() : 'small_image';
+$isInWishList = Mage::helper('ecomitize_all')->isInWishList($_product);
+$isInCompareList = Mage::helper('ecomitize_all')->isInCompareList($_product);
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/* ---------------- do not forget to edit --------------- */
+/* ---- skin/frontend/eco/default/js/scroll/scroll.js --- */
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+?>
+<div class="products-item products-item-<?php echo $this->getProduct()->getId();?>">
+    <div class="products-item-img">
+        <?php echo $this->getLayout()->createBlock('core/template')->setProduct($_product)->setTemplate('catalog/product/sticker.phtml')->toHtml(); ?>
+        <a href="<?php echo $_product->getProductUrl(); ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, $imageType), null, true); ?>" class="product-image">
+            <img class="img-responsive" src="<?php echo Mage::helper('catalog/image')->init($_product, 'small_image')->resize(300); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, $imageType), null, true); ?>">
+        </a>
+    </div>
+    <?php if ($isWishList || $isListMode): ?><div class="product-shop"><?php endif; ?>
+    <h2 class="product-name">
+        <a href="<?php echo $_product->getProductUrl(); ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
+            <?php echo $helper->productAttribute($_product, $_product->getName(), 'name') ?>
+        </a>
+    </h2>
+    <?php echo $this->getPriceHtml($_product, true); ?>
+    <?php if (!$isCompareList): ?>
+        <?php if($_product->isSaleable()): ?>
+            <div class="add-to-cart">
+                <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')">
+                        <span>
+                            <span><?php echo $this->__('Add to Cart') ?></span>
+                        </span>
+                </button>
+            </div>
+        <?php else: ?>
+            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+        <?php endif; ?>
+    <?php endif; ?>
+    <ul class="add-to-links">
+        <?php if(!$isWishList): ?>
+            <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                <li class="add-to-wishlist"><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product); ?>" class="link-wishlist<?php echo $isInWishList ? ' active' : '' ?>" onclick="return addToWishlistAjax(this.href);" title="<?php echo $isInWishList ? 'Added to Wishlist' : 'Add to Wishlist' ?>" data-active-text="<?php echo $this->__('Added to Wishlist') ?>"><span><?php echo $this->__('Add to Wishlist') ?></span></a></li>
+            <?php endif; ?>
+        <?php endif; ?>
+        <?php if(!$isCompareList): ?>
+            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                <li class="add-to-compare"><a href="<?php echo $_compareUrl ?>" class="link-compare<?php echo $isInCompareList ? ' active' : '' ?>" onclick="return addToCompareAjax(this.href);" title="<?php echo $isInWishList ? 'Added to Compare' : 'Add to Compare' ?>" data-active-text="<?php echo $this->__('Added to Compare') ?>"><span><?php echo $this->__('Add to Compare') ?></span></a></li>
+            <?php endif; ?>
+        <?php endif; ?>
+        <li class="show-quick-view"><a href="#quickViewModal" data-toggle="modal" class="link-quick-view" data-url="<?php echo Mage::getBaseUrl(), 'quickview/quickview/view/id/', $_product->getId() ?>/"><span><?php echo $this->__('Quick View') ?></span></a></li>
+        <?php if($isWishList): ?>
+            <?php $childEdit = $this->getChild('customer_wishlist_item_edit'); $childEdit->setItem($this->getProduct());  ?>
+            <?php echo $childEdit->toHtml(); ?>
+            <?php $child = $this->getChild('customer_wishlist_item_remove'); $child->setItem($this->getProduct());  ?>
+            <?php echo $child->toHtml(); ?>
+        <?php endif; ?>
+    </ul>
+    <?php if ($isWishList || $isListMode): ?></div><?php endif; ?>
+    <input type="hidden" class="check-list" data-list="<?php echo $isListMode ?>" />
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout>
+    <ecomitize_all_brand_index>
+        <reference name="content">
+            <block type="core/template" name="main.brand" template="brand/main_page.phtml">
+                <block type="ecomitize_all/brand_brand" name="eco.brand" template="brand/brand_list.phtml"/>
+            </block>
+        </reference>
+    </ecomitize_all_brand_index>
+    <ecomitize_all_manufactures_index>
+        <update handle="ecomitize_all_brand_index" />
+    </ecomitize_all_manufactures_index>
+</layout>

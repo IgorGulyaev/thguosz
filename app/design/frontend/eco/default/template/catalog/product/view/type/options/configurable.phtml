@@ -1,0 +1,211 @@
+<?php
+    $_configurableData = Mage::helper('core')->jsonDecode($this->getJsonConfig());
+
+    foreach($_configurableData['attributes'] as $attribute){
+        $attributeCodes[] =$attribute['code'];
+    }
+    $quality = 100;
+
+    $_product    = $this->getProduct();
+    $simpleProductsFromComparable =  Mage::getModel('catalog/product_type_configurable')
+        ->getUsedProductCollection($_product)->addAttributeToSelect('*');
+    $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes()); // for old template
+    $resizeThumbnail  = ($this->getResizeThumbnail()) ? $this->getResizeThumbnail() : '220, 220';
+    $optionDisplaySimples = Mage::getStoreConfig('ecomitize_all_options/configurableProductOptions/enable_option');
+
+    $specialPriceConfigurable = $_product->getSpecialPrice();
+    $priceConfigurable = $_product->getPrice();
+    $imageSrc = Mage::helper('catalog/image')->init($_product, 'thumbnail', $_product->getImage())->keepTransparency(true)->setQuality($quality)->resize((int)$resizeThumbnail);
+    $_renderers = $this->getChild('attr_renderers')->getSortedChildren();
+    $_jsonConfig = $this->getJsonConfig();
+?>
+<?php if ($optionDisplaySimples):?>
+    <?php foreach ($_configurableData['attributes'] as $_attribute): ?>
+        <input class="hidden-attribute" type="hidden" name="super_attribute[<?php echo $_attribute['id'] ?>]" id="attribute<?php echo $_attribute['id'] ?>" class="form-control required-entry">
+    <?php endforeach; ?>
+    <div class="simple-products-block">
+        <ul>
+            <?php foreach($simpleProductsFromComparable as $simple): ?>
+                <?php if ($simple->isSaleable() && count($simple) ):?>
+                    <?php
+                        if ( $simple->getSpecialPrice() ){
+                            $priceToShow = $simple->getSpecialPrice();
+                        }elseif( $specialPriceConfigurable ){
+                            $priceToShow = $specialPriceConfigurable;
+                        }elseif( $simple->getPrice() ){
+                            $priceToShow = $simple->getPrice();
+                        }else{
+                            $priceToShow = $priceConfigurable;
+                        }
+                        $optionPrice = 0;
+                    ?>
+
+                    <li id="prodImage-<?php echo $simple->getId(); ?>"
+                    data-prod-id="<?php echo $simple->getId(); ?>"
+                    data-prod-desc="<?php echo str_replace('"','\'',$simple->getDescription()); ?>"
+                    data-prod-name="<?php echo $simple->getName(); ?>"
+                    data-prod-price="<?php echo $priceToShow; ?>"
+                    data-prod-sku="<?php echo $simple->getSku(); ?>"
+                    <?php
+                        foreach($attributeCodes as $existingAttribute ){
+                            echo ' data-prod-'.$existingAttribute.'="'.$simple->getAttributeText($existingAttribute ).'" ';
+                        }
+                    ?>>
+                        <span class="simple-products-wrap">
+                            <?php foreach ($_configurableData['attributes'] as $_attribute): ?>
+                                <?php foreach ($_attribute['options'] as $_options): ?>
+                                    <?php if ($_options['label']  === $simple->getAttributeText($_attribute['code'])): ?>
+                                        <?php
+                                            if($_options['price'] > 0){
+                                                $optionPrice += $_options['price'];
+                                            }
+                                        ?>
+                                        <span class="option-data" data-attribute-id="<?php echo $_attribute['id'] ?>" data-option-id="<?php echo $_options['id'] ?>" data-option-price="<?php echo $_options['price'] ?>" data-option-old-price="<?php echo $_options['oldPrice'] ?>" data-msrp-price="<?php echo number_format($simple->getMsrp(), 2); ?>"></span>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endforeach; ?>
+                            <span class="simple-products-img">
+                                <?php
+                                    if($simple->getImage() != "no_selection"){
+                                        $imageSrc = Mage::helper('catalog/image')->init($simple, 'thumbnail', $simple->getImage())->keepTransparency(true)->setQuality($quality)->resize((int)$resizeThumbnail);
+                                    }
+                                ?>
+                                <img src="<?php echo   $imageSrc; ?>">
+                            </span>
+                            <span class="simple-products-content">
+                                <?php if ($simple->getName()): ?><span class="simple-products-name"><?php echo $simple->getName(); ?></span><?php endif; ?>
+                                <?php if ($simple->getPrice()): ?><span id="simpleProductsPrice" class="price simple-products-price"><?php echo $priceToShow = Mage::helper('core')->currency($priceToShow+$optionPrice, true, false);$priceToShow; ?></span><?php endif; ?>
+                                <span class="simple-products-attributes">
+                                <?php
+                                    foreach($attributeCodes as $existingAttribute ){
+                                        echo '<span><span>'.$existingAttribute.':</span> '.$simple->getAttributeText($existingAttribute).'</span>';
+                                    }
+                                ?>
+                                </span>
+                            </span>
+                        </span>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <input type="hidden" name="configOptionDisplaySimples" value="<?php echo Mage::getStoreConfig('ecomitize_all_options/configurableProductOptions/enable_option');?>">
+    <input type="hidden" name="configurableproduct" value="<?php echo $this->getProduct()->isConfigurable();?>">
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            var $optionDisplaySimples =  $( "input[name*='configOptionDisplaySimples']" ).val();
+            var $isConfigurableProduct = $( "input[name*='configurableproduct']" ).val();
+            if($optionDisplaySimples && $isConfigurableProduct) {
+
+                // setting default value
+                var $selectedElement;
+                var localStorageFlag = false;
+                var $firstSimpleProduct = $('.simple-products-block li')[0];
+                var $configurableProductId = $("input[name*='product']").val();
+                var localStorageKey = 'selected-' + $configurableProductId;
+
+                if (typeof(Storage) !== "undefined") {
+                    localStorageFlag = true;
+                    var selectedElementStorage = localStorage.getItem(localStorageKey);
+                }
+
+                var setActiveSimple = function (element, e) { // set active simple prod
+
+                    var $priceActive = element.find('#simpleProductsPrice').text();
+                    var prodId = element.data("prod-id");
+                    var currentCounter = $('.prod' + prodId).data("counter");
+                    $('.product-view .price-box').find('.price').not('#old-price-' + $configurableProductId).text($priceActive);
+                    if ($('#ecomitizeQuickView')[0].childElementCount > 0) { // change price in quick view
+                        $('#ecomitizeQuickView .price-box').find('.price').not('#old-price-' + $configurableProductId).text($priceActive);
+                    }
+                    element.addClass("active");
+                    element.siblings().removeClass("active");
+                    $('.product-sku').text('Sku: ' + element.data("prod-sku"));
+                    $('.product-shop').find('h1').text(element.data("prod-name"));
+                    $('#tab-description').text(element.data("prod-desc"));
+
+                    element.find("span").each(function (index, value) {
+                        $("input[name*='super_attribute[" + $(value).data("attribute-id") + "]']").val($(value).data("option-id"));
+                    });
+
+                    if (e.originalEvent !== undefined || e.type == 'DOMContentLoaded') {
+                        if(typeof $sync1  !== 'undefined'){
+                            $sync1.trigger('to.owl.carousel', [currentCounter, 0, true]);
+                        }
+                    }
+
+                    $("input[name*='related_product']").val(''); // fix adding two products
+
+                }
+
+                if (localStorageFlag && selectedElementStorage) {
+                    $selectedElement = $('#' + selectedElementStorage);
+                } else {
+                    $selectedElement = $($firstSimpleProduct);
+                }
+
+                var e = window.event;
+                setActiveSimple($selectedElement, e);
+
+                $('.simple-products-block').on('click', 'li', function (e) {
+
+                    setActiveSimple($(this), e);
+
+                    if (localStorageFlag) {
+                        localStorage.setItem(localStorageKey, $(this).attr('id'));
+                    }
+
+                });
+            }
+        });
+    </script>
+<?php else: ?>
+    <?php if ($_product->isSaleable() && count($_attributes)):?>
+        <dl>
+            <?php foreach($_attributes as $_attribute): ?>
+                <?php
+                $_rendered = false;
+                foreach ($_renderers as $_rendererName):
+                    $_renderer = $this->getChild('attr_renderers')->getChild($_rendererName);
+                    if (method_exists($_renderer, 'shouldRender') && $_renderer->shouldRender($_attribute, $_jsonConfig)):
+                        $_renderer->setProduct($_product);
+                        $_renderer->setAttributeObj($_attribute);
+                        echo $_renderer->toHtml();
+                        $_rendered = true;
+                        break;
+                    endif;
+                endforeach;
+
+                if (!$_rendered):
+                    ?>
+                    <dt><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label></dt>
+                    <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+                        <div class="input-box">
+                            <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+                                <option><?php echo $this->__('Choose an Option...') ?></option>
+                            </select>
+                        </div>
+                    </dd>
+                <?php endif; ?>
+                <?php unset($_rendered); ?>
+            <?php endforeach; ?>
+        </dl>
+        <script type="text/javascript">
+            var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
+
+            jQuery('.swatch-link').on('click', function () {
+                var element = jQuery(this);
+                var elementId = element.attr('id');
+                var elementClasses = element.attr('class');
+                var matches = elementClasses.match(/\bswatch-link-[0-9]*\b/);
+                var attributeId = matches[0].replace(/[a-z-]*/, '');
+                elementId = elementId.replace(/[a-z-]*/, '');
+
+                if ((typeof attributeId != 'undefined') && (typeof elementId != 'undefined')) {
+                    jQuery('#attribute' + attributeId + ' option[value=' + elementId + ']').attr("selected", true);
+                }
+            });
+        </script>
+    <?php endif;?>
+    <?php echo $this->getChildHtml('after') ?>
+<?php endif; ?>

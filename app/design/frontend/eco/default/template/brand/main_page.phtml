@@ -1,0 +1,9 @@
+<?php if( sizeof(  $this->getChild('eco.brand')->getBrandCollection() ) == 0): ?>
+    <p><?php echo $this->__('There are no current brands.') ?></p>
+<?php else: ?>
+    <div class="category-products">
+        <div class="category-row products-grid">
+            <?php echo $this->getChildHtml()?>
+        </div>
+    </div>
+<?php endif; ?>

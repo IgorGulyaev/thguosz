@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ecomitize_all_options>
+                                        <title>Ecomitize configuration</title>
+                                    </ecomitize_all_options>
+                                    <ecomitize_all_synchronize_ln>
+                                        <title>Synchronize layered navigation with categories</title>
+                                    </ecomitize_all_synchronize_ln>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

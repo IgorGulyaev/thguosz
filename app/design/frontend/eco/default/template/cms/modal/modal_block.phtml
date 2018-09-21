@@ -1,0 +1,15 @@
+<div<?php if ($this->getModalId()): ?> id="<?php echo $this->getModalId(); ?>"<?php endif; ?> class="modal<?php if ($this->getModalClass()): ?> <?php echo $this->getModalClass(); ?><?php endif; ?>">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button<?php if ($this->getModalId()): ?> id="<?php echo $this->getModalId(); ?>-close"<?php endif; ?> type="button" class="close" data-dismiss="modal"><i class="icon-close"></i></button>
+                <?php if ($this->getModalTitle()): ?>
+                    <h3 class="modal-title"><?php echo $this->getModalTitle(); ?></h3>
+                <?php endif; ?>
+            </div>
+            <div class="modal-body">
+                <?php echo $this->getChildHtml(); ?>
+            </div>
+        </div>
+    </div>
+</div>

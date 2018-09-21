@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ecomitize_Footernav>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Ecomitize_Scroll/>
+            </depends>
+        </Ecomitize_Footernav>
+    </modules>
+</config>

@@ -1,0 +1,55 @@
+<?php
+/**
+ *
+ * Copyright (c) 2015 Ecomitize Ltd
+ *
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+    $_category  = Mage::getSingleton('catalog/layer')->getCurrentCategory();
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+    $params = Mage::app()->getFrontController()->getRequest()->getParams();
+    $productRenderer = $this->getChild('product_renderer');
+?>
+<button class="button button-filter collapsed visible-xs" type="button" data-toggle="collapse" data-target=".col-left" aria-controls="col-left" aria-expanded="false">
+    <span><?php echo $this->__('Filter') ?></span>
+</button>
+<?php if(!$_productCollection->count()): ?>
+<div class="category-products"><p><?php echo $this->__('There are no products matching the selection.') ?></p></div>
+<?php else: ?>
+<div class="category-products">
+    <?php echo $this->getToolbarHtml(); ?>
+    <?php if($this->getMode()!='grid'): ?>
+        <?php $_iterator = 0; ?>
+        <div class="category-row products-list">
+            <?php foreach ($_productCollection as $_product): ?>
+                <?php $productRenderer->setProduct($_product); ?>
+                <div class="category-item">
+                    <?php echo $productRenderer->toHtml(); ?>
+                </div>
+            <?php endforeach ?>
+        </div>
+    <?php else: ?>
+    <div class="category-row products-grid">
+        <?php echo $this->getChildHtml('home.page.banners'); ?>
+        <?php foreach ($_productCollection as $_product): ?>
+            <?php $productRenderer->setProduct($_product); ?>
+            <div class="category-item">
+                <?php echo $productRenderer->toHtml(); ?>
+            </div>
+        <?php endforeach ?>
+    </div>
+    <?php endif; ?>
+    <div class="toolbar-footer">
+        <?php echo $this->getToolbarHtml(); ?>
+    </div>
+</div>
+<?php endif; ?>

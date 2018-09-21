@@ -1,0 +1,124 @@
+/* configurable swatch */
+
+.swatch-attr .input-box {
+    margin-bottom: 0;
+}
+
+.swatch-attr .validation-advice {
+    right: auto;
+    left: 0;
+    margin-top: 0;
+}
+
+@media (min-width: 767px) {
+    .swatch-attr label .select-label {
+        display: none;
+    }
+}
+
+.product-options label {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #3c3c3c;
+}
+
+.configurable-swatch-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+.product-options [onclick*='clearConfig'] {
+    display: block;
+    float: right;
+}
+
+.configurable-swatch-list > li > a {
+    position: relative;
+    display: block;
+    padding: 10px;
+    border: 2px solid #000;
+    height: auto!important;
+    min-width: 40px!important;
+    text-decoration: none;
+    overflow: hidden;
+    text-align: center;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.configurable-swatch-list > li > a:hover {
+    border-color: #d6d6d6;
+}
+
+.configurable-swatch-list > li > a span {
+    height: auto!important;
+    min-width: 100%!important;
+    line-height: 1!important;
+    display: block;
+}
+
+.configurable-swatch-list > li.is-media {
+    min-height: 25px;
+}
+
+.configurable-swatch-list > li.is-media > a {
+    width: 15px!important;
+    height: 15px!important;
+    opacity: 1;
+    padding: 0;
+    font-size: 14px;
+    border: 0!important;
+    min-width: 0!important;
+    margin-top: 5px;
+}
+
+.configurable-swatch-list > li.is-media > a > span > img {
+    display: block;
+    width: 15px!important;
+    height: 15px!important;
+}
+
+.configurable-swatch-list > li.is-media.not-available > a,
+.configurable-swatch-list > li.is-media.not-available > a:focus,
+.configurable-swatch-list > li.is-media.not-available > a:active {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.configurable-swatch-list > li.selected > a {
+    border-color: #31a348;
+    color: #31a348;
+    cursor: default;
+}
+
+.configurable-swatch-list > li.is-media.selected > a {
+    -webkit-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+    border: 0;
+    width: 20px!important;
+    height: 20px!important;
+    top: -3px;
+}
+
+.configurable-swatch-list > li.is-media.selected > a img {
+    width: 20px!important;
+    height: 20px!important;
+}
+
+.configurable-swatch-list > li > a[name="white"] {
+    border: 1px solid #d6d6d6!important;
+}
+
+.configurable-swatch-list .x {
+    display: none;
+}
+
+/**/

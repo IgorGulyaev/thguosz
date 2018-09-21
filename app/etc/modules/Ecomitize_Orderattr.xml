@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ecomitize_Orderattr>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Amasty_Orderattr />
+            </depends>
+        </Ecomitize_Orderattr>
+    </modules>
+</config>

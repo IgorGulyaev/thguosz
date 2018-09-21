@@ -1,0 +1,5 @@
+<div id="ecomitizeQuickView">
+    <?php if((Mage::getStoreConfig('amconf/zoom/enable') || Mage::getStoreConfig('amconf/lightbox/enable')) && !Mage::app()->getRequest()->isAjax()) : ?>
+        <script type="text/javascript" src="<?php echo Mage::getDesign()->getSkinUrl('js/amasty/amconf/zoomer.js', array()) ?>"></script>
+    <?php endif;?>
+</div>

@@ -1,0 +1,17 @@
+<?php
+/* if product list <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/product/view/special_price.phtml')->setProduct($_product)->toHtml(); ?> */
+$_product = Mage::registry('current_product') ? Mage::registry('current_product'): $this->getProduct();
+$_actualPrice = $_product->getPrice();
+$_specialPrice =  $_product->getFinalPrice();
+?>
+<?php echo $this->getChildHtml('', true, true) ?>
+<?php if ($_actualPrice > $_specialPrice): ?>
+    <?php
+    $savePrice = $_actualPrice - $_specialPrice;
+    $savePercent = round($savePrice * 100 / $_actualPrice, 0);
+    ?>
+    <span class="price-save">
+        <p class="price-save-price"><span><?php echo $this->__('You save') ?></span><?php echo Mage::helper('core')->currency($savePrice, true, false); ?></p>
+        <p class="price-save-percent"><?php echo $savePercent; ?>%<span> <?php echo $this->__('Off') ?></span></p>
+    </span>
+<?php endif; ?>

@@ -1,0 +1,96 @@
+table[id*='totals-table'],
+table[class*='data-table'] {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+table[id*='totals-table'] > thead > tr > th,
+table[id*='totals-table'] > tbody > tr > th,
+table[id*='totals-table'] > tfoot > tr > th,
+table[id*='totals-table'] > thead > tr > td,
+table[id*='totals-table'] > tbody > tr > td,
+table[id*='totals-table'] > tfoot > tr > td,
+table[class*='data-table'] > thead > tr > th,
+table[class*='data-table'] > tbody > tr > th,
+table[class*='data-table'] > tfoot > tr > th,
+table[class*='data-table'] > thead > tr > td,
+table[class*='data-table'] > tbody > tr > td,
+table[class*='data-table'] > tfoot > tr > td,
+.sp-methods ul > li {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #000;
+}
+
+table[id*='totals-table'] > thead > tr > th,
+table[class*='data-table'] > thead > tr > th {
+    vertical-align: middle;
+    border-bottom: 2px solid #000;
+}
+
+table[id*='totals-table'] > caption + thead > tr:first-child > th,
+table[id*='totals-table'] > colgroup + thead > tr:first-child > th,
+table[id*='totals-table'] > thead:first-child > tr:first-child > th,
+table[id*='totals-table'] > caption + thead > tr:first-child > td,
+table[id*='totals-table'] > colgroup + thead > tr:first-child > td,
+table[id*='totals-table'] > thead:first-child > tr:first-child > td,
+table[class*='data-table'] > caption + thead > tr:first-child > th,
+table[class*='data-table'] > colgroup + thead > tr:first-child > th,
+table[class*='data-table'] table[class*='data-table'] [id*='totals-table'] > caption + thead > tr:first-child > td,
+table[class*='data-table'] > colgroup + thead > tr:first-child > td,
+table[class*='data-table'] > thead:first-child > tr:first-child > td {
+    border-top: 0;
+}
+
+table[id*='totals-table'] > tbody + tbody,
+table[class*='data-table'] > tbody + tbody {
+    border-top: 2px solid #000;
+}
+
+table[class*='data-table'] > tbody > tr:hover,
+[id*='totals-table'] > tbody > tr:hover,
+.sp-methods dd:hover {
+    background-color: transparent;
+}
+
+table[class*='data-table'] .product-name {
+    margin-top: 0;
+    text-align: left!important;
+}
+
+table[class*='data-table'] .item-options dt,
+table[class*='data-table'] .item-options dl {
+    float: left;
+}
+
+table[class*='data-table'] .item-options dt:after {
+    content: ':';
+}
+
+table[class*='data-table'] .item-options dt:not(:last-child),
+table[class*='data-table'] .item-options dl:not(:last-child) {
+    margin-right: 7px;
+}
+
+.table-responsive > .table > tbody > tr > td,
+.table-responsive > .table > tbody > tr > th,
+.table-responsive > .table > tfoot > tr > td,
+.table-responsive > .table > tfoot > tr > th,
+.table-responsive > .table > thead > tr > td,
+.table-responsive > .table > thead > tr > th {
+    white-space: normal;
+}
+
+.table-responsive > .table > tbody > tr > th {
+    width: 1%;
+    white-space: nowrap;
+}
+
+table.grouped-items-table .input-text.qty {
+    padding-left: 0!important;
+    padding-right: 0!important;
+    text-align: center;
+    width: 40px!important;
+}
